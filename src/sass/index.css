@@ -1,16 +1,16 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 :root {
-  --dominant-font: "Roboto";
+  --dominant-font: 'Roboto';
   --dominant-color: #000000;
   --secondary-color: #ffffff;
-  --accent-color: #FF6B08;
+  --accent-color: #ff6b08;
   --grey-color-footer: #545454;
-  --grey-color-modal: #8C8C8C;
+  --grey-color-modal: #8c8c8c;
   --background-color-modal: #ffffff;
-  --background-color-gallery: #E5E5E5;
+  --background-color-gallery: #e5e5e5;
   --background-color-header: rgba(0, 0, 0, 0.56);
-  --background-color-footer: #F7F7F7;
-  --button-accent-color: #FF6B01;
+  --background-color-footer: #f7f7f7;
+  --button-accent-color: #ff6b01;
   --main-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -29,7 +29,7 @@ body {
   padding: 0;
   white-space: nowrap;
   -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
+  clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
@@ -80,4 +80,4 @@ p {
 header {
   height: 230px;
   background-color: red;
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */
