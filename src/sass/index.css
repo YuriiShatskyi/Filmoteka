@@ -79,5 +79,40 @@ p {
 
 header {
   height: 230px;
-  background-color: red;
+
+  background-image: url('../images/home-desktop.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media screen and (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-width: 1200px) and (min-resolution: 192dpi),
+  screen and (min-width: 1200px) and (min-resolution: 2dppx) {
+  header {
+    background-image: url('../images/home-desktop@2x.jpg');
+  }
+}
+@media screen and (max-width: 1199px) {
+  header {
+    background-image: url('../images/home-tablet.jpg');
+  }
+}
+@media screen and (max-width: 1199px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (max-width: 1199px) and (min-resolution: 192dpi),
+  screen and (max-width: 1199px) and (min-resolution: 2dppx) {
+  header {
+    background-image: url('../images/home-tablet@2x.jpg');
+  }
+}
+@media screen and (max-width: 767px) {
+  header {
+    background-image: url('../images/home-mobile.jpg');
+  }
+}
+@media screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+  screen and (max-width: 767px) and (min-resolution: 192dpi),
+  screen and (max-width: 767px) and (min-resolution: 2dppx) {
+  header {
+    background-image: url('../images/home-mobile@2x.jpg');
+  }
 } /*# sourceMappingURL=index.css.map */
