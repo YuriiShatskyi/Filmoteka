@@ -1,0 +1,86 @@
+.footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: var(--background-color-footer);
+
+        &__box {
+            @extend .container;
+
+                display: flex;                
+                align-items: center;
+                justify-content: center;
+
+            @media screen and (min-width: $mobile) {
+                flex-direction: column;
+            }    
+
+                          @media screen and (min-width: $tablet) {
+                              flex-direction: row;
+                          }
+                       
+        }
+
+        &__text {
+            
+            padding-right: 5px;
+        
+            color: var(--grey-color-footer);
+
+            text-align: center;
+            font-weight: 400;
+
+            @media screen and (max-width: $mobile) {
+                font-size: 14px;
+                line-height: 1.14;
+            };
+
+            @media screen and (min-width: $tablet) {
+                font-size: 16px;
+                line-height: 1.19;
+            };         
+        
+        }  
+        
+        &__icon-heart {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        &__link {
+            color: var(--grey-color-footer);
+
+            text-align: center;
+            font-weight: 400;
+            cursor: pointer;
+            @media screen and (max-width: $mobile) {
+                    font-size: 14px;
+                    line-height: 1.14;
+                }   
+                
+                @media screen and (min-width: $tablet) {
+                    font-size: 16px;
+                    line-height: 1.19;
+                }
+            
+        }
+
+        &__info {
+            @media screen and (min-width: $tablet) {
+                    margin-right: 5px;
+                }
+        }
+}
+
+span.footer__text {
+    border-right: 1px solid var(--grey-color-footer);
+}
+
+// font-family: 'Roboto';
+// font-style: normal;
+// font-weight: 400;
+// font-size: 14px;
+// line-height: 16px;
+// display: flex;
+// align-items: center;
+// text-align: center;
+
