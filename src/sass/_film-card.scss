@@ -1,0 +1,57 @@
+.gallery__poster-card {
+  text-decoration: none;
+  width: 280px;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 394px;
+  }
+}
+
+.poster-card__image {
+  width: 280px;
+  height: 402px;
+  border-radius: 5px;
+  object-fit: cover;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 455px;
+    object-fit: cover;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 394px;
+    height: 574px;
+    object-fit: cover;
+  }
+}
+
+.poster-card__info {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  margin-top: 10px;
+  color: var(--accent-color);
+
+  @media screen and (min-width: 768px) {
+    margin-top: 8px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 12px;
+  }
+}
+
+.info-item.title {
+  line-height: 1.16;
+  text-transform: uppercase;
+  color: var(--dominant-color);
+}
