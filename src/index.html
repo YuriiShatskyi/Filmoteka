@@ -21,10 +21,16 @@
     <!-- ❗️❗️❗️ Add partials like so for every page -->
 
     <include src="./partials/header.html"></include>
-    <include src="./partials/gallery.html"></include>
+    <main>
+      <section class="section">
+        <include src="./partials/gallery.html"></include>
+        <div id="pagination" class="tui-pagination"></div>
+      </section>
+    </main>
+    
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
-
+    
     <!-- ======== JS ============ -->
 
     <script type="module" src="./index.js"></script>
