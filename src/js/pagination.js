@@ -1,15 +1,15 @@
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
-import '../sass/_pagination.scss';
-import { fetchTrendingFilms } from './fetch';
+// import pagination from 'tui-pagination';
+// import 'tui-pagination/dist/tui-pagination.css';
+// import '../sass/_pagination.scss';
+// import { fetchTrendingFilms } from './fetch';
 
-const pagination = require('tui-pagination');
+// const pagination = require('tui-pagination');
 
 
 // const pagination = tui.pagination;
 
-const container = document.getElementById('pagination');
-const options = { // below default value of options
+const container = document.querySelector('pagination');
+const options = { 
      totalItems: 10,
      itemsPerPage: 10,
      visiblePages: 10,
@@ -34,18 +34,25 @@ const options = { // below default value of options
              '</a>'
      }
 };
-const pagination = new pagination(container, options);
+options();
+// const pagination = new pagination(container, options);
 
-pagination.on('afterMove', (event) => {
-     const currentPage = event.page;
-     console.log(currentPage);
-});
+// const page = pagination.getCurrentPage()
+// fetchTrendingFilms().then(data => {
+//     pagination.reset(data.total_result);
+//     renderMarkup(data);
+// });
 
-pagination.on('beforeMove', (event) => {
-    const currentPage = event.page;
+// pagination.on('afterMove', (event) => {
+//      const currentPage = event.page;
+//      console.log(currentPage);
+// });
 
-    if (currentPage === 10) {
-        return false;
-        // return true;
-    }
-});
+// pagination.on('beforeMove', (event) => {
+//     const currentPage = event.page;
+
+//     if (currentPage === 10) {
+//         return false;
+//         // return true;
+//     }
+// });
