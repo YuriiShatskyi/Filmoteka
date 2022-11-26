@@ -1,7 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import '../sass/_pagination.scss';
-import { fetchTrendingFilms } from '../index.js';
+import { fetchTrendingFilms } from './fetch';
 
 const pagination = require('tui-pagination');
 
