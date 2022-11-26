@@ -33,6 +33,10 @@
  
 }
 
+html {
+    scroll-behavior: smooth;
+};
+
 
 body {
     font-family: var(--dominant-font), sans-serif;
