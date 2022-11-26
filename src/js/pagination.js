@@ -1,10 +1,12 @@
 import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import '../sass/_pagination.scss';
+import { fetchTrendingFilms } from './fetch';
+
+const pagination = require('tui-pagination');
 
 
-const Pagination = require('tui-pagination');
-
-
-const Pagination = tui.Pagination;
+// const pagination = tui.pagination;
 
 const container = document.getElementById('pagination');
 const options = { // below default value of options
@@ -32,7 +34,7 @@ const options = { // below default value of options
              '</a>'
      }
 };
-const pagination = new Pagination(container, options);
+const pagination = new pagination(container, options);
 
 pagination.on('afterMove', (event) => {
      const currentPage = event.page;
