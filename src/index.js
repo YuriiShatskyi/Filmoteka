@@ -1,3 +1,6 @@
+
+import './js/pagination';
+
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -50,3 +53,4 @@ function renderMarkup() {
 }
 
 renderMarkup();
+
