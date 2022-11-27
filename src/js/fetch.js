@@ -23,8 +23,8 @@ export async function fetchTrendingFilms() {
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
     );
     const result = await response.json();
-    console.log(result.results);
-    return result.results;
+    console.log(result);
+    return result;
   } catch (error) {
     console.error(error);
   }
@@ -35,7 +35,7 @@ function renderMarkup() {
 
     // addPage()
     
-    const newMarkup = movies
+    const newMarkup = movies.results
       .map(movie => {
 let genres = movie.genre_ids.map(genre_id => { return (API_GENRES.find(genre => genre.id === genre_id)).name}).join(', ');
        
@@ -69,6 +69,7 @@ renderMarkup();
 
 // Функція для кнопки "next and back"
 function onLoadMore() {
+ 
     addPage()
     
     fetchTrendingFilms()
@@ -79,26 +80,57 @@ function onLoadMore() {
 
 
 function backOnLoadMore() {
+    if (page === 1) {
+      return
+    }
     resetPage()
-    
     fetchTrendingFilms()
         .then(renderMarkup)
        
     
 }
 
-
 //  функція , що б переходити на наступну сторінку
     function addPage() { 
       
-        page += 1;
+      page += 1;
+      
             
     }
 
-    // функція що б почати з початку з нового пошуку
+    // функція що б повернути на одну сторінку назад
     function resetPage() { 
-        page = 1;
+      page -= 1;
+     
     }
-//   function endOfPictures(params) {
+
+// Створення цифр пагінації
+
+// function calculateNumbersOfPage() {
+//   fetchTrendingFilms().then(pages => {
+  
+//     const countNumderofPage = Math.ceil(pages.total_results / 20);
     
-//   }
+//     return countNumderofPage
+//     })
+      
+// }
+
+// const numberOfPage = calculateNumbersOfPage();
+
+
+
+// function pageNumbers(numberOfPage, page) {
+  
+//     var shownPages = 3;
+//     var result = [];
+//     if (page > numberOfPage - shownPages) {
+//         result.push(numberOfPage - 2, numberOfPage - 1, numberOfPage);
+//     } else {
+//         result.push(page, page + 1, page + 2, '...', numberOfPage);
+//     }
+//     return result;
+// }
+
+
+// console.log(pageNumbers(1000 , 50));
