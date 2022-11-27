@@ -156,6 +156,31 @@
     }
 }
 
+// auth button
+.header__auth-btn {
+    font-size: 12px;
+    line-height: 1.17;
+    font-family: var(--dominant-font), sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    color: var(--secondary-color);
+    margin-left: 40px;
+    padding: 0;
+    cursor: pointer;
+    &:visited {
+        color: var(--secondary-color);
+    }
+    &:active {
+    color: var(--accent-color);
+    }       
+    &:hover {
+    color: var(--accent-color);
+    }
+}
+
 // .header__link--active {
 //     border-bottom: 3px solid var(--nav-underline-color);
 // }
