@@ -122,6 +122,8 @@ function createModalFilmInfoMarkup({
         
             <h3 class="modal__descr-title">About</h3>
             <p class="modal__descr" id="overview">${overview}</p>
+
+            <button type="button" id="trailer" class="modal__button">WATCH TRAILER</button>
         
             <div class="modal__button-container">
                 <button type="button" id="watched" class="modal__button">ADD TO WATCHED</button>
