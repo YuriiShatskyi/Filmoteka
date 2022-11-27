@@ -30,8 +30,8 @@ export async function fetchTrendingFilms() {
   }
 }
 
-function renderMarkup() {
-  fetchTrendingFilms().then(movies => {
+function renderMarkup(callback, destination) {
+  callback.then(movies => {
 
     // addPage()
     
@@ -57,14 +57,14 @@ let genres = movie.genre_ids.map(genre_id => { return (API_GENRES.find(genre => 
 `;
       })
       .join('');
-    refs.gallery.innerHTML = newMarkup;
+    destination.innerHTML = newMarkup;
   });
 }
 
-renderMarkup();
+renderMarkup(fetchTrendingFilms(), refs.gallery);
 
 
-// =============================================
+// // =============================================
 
 
 // Функція для кнопки "next and back"
@@ -95,10 +95,29 @@ function backOnLoadMore() {
             
     }
 
-    // функція що б почати з початку з нового пошуку
+// функція що б почати з початку з нового пошуку
     function resetPage() { 
         page = 1;
     }
 //   function endOfPictures(params) {
     
 //   }
+
+//     // функція пошуку по назві
+
+
+async function fetchSearchingFilms() {
+  try {
+    const response = await fetch(
+           `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${currentPage}&include_adult=false`
+    );
+    const result = await response.json();
+    console.log(result.results);
+    return result.results;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+// renderMarkup(fetchSearchingFilms(), refs.gallery);
