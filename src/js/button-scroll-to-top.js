@@ -1,14 +1,17 @@
 /*
 scroll-top-button
 */
-let getEl = selector => document.querySelector(selector)
-getEl('.js-button-scroll-top').addEventListener('click', onScrollBtnClick)
+const refs = {
+  btnScrollTop: document.querySelector('.js-button-scroll-top'),
+}
+
+refs.btnScrollTop.addEventListener('click', onScrollBtnClick)
 
   window.onscroll = () => {
   if (window.scrollY > 700) {
-    getEl('.js-button-scroll-top').classList.add('is-show')
+    refs.btnScrollTop.classList.add('is-show')
   } else if (window.scrollY < 700) {
-    getEl('.js-button-scroll-top').classList.remove('is-show')
+    refs.btnScrollTop.classList.remove('is-show')
   }
 }
 

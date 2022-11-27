@@ -1,4 +1,5 @@
-import "./fetch"
+import "./fetch";
+import {addFilmToWatched} from './addToWatched'
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -57,7 +58,8 @@ async function getMoviesByID(movieID) {
 
 export function moviesByID(movieID) {
     getMoviesByID(movieID).then(data => {
-    createModalFilmInfoMarkup(data);
+        createModalFilmInfoMarkup(data);
+        addFilmToWatched(data);
   });
 }
 
@@ -122,8 +124,8 @@ function createModalFilmInfoMarkup({
             <p class="modal__descr" id="overview">${overview}</p>
         
             <div class="modal__button-container">
-                <button type="button" id="WATCHED" class="modal__button">ADD TO WATCHED</button>
-                <button type="button" id="QUEUE" class="modal__button">ADD TO QUEUE</button>
+                <button type="button" id="watched" class="modal__button">ADD TO WATCHED</button>
+                <button type="button" id="queue" class="modal__button">ADD TO QUEUE</button>
             </div>
         
         </div>
