@@ -11,6 +11,7 @@ export function addFilmToWatched(data) {
             
                 listFilmToWatched.push(filmToAdd)
         }
+        console.log(listFilmToWatched)
         localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
     })
 }
