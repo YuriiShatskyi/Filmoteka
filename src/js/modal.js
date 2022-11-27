@@ -1,5 +1,5 @@
 import "./fetch";
-import {addFilmToWatched} from './addToWatched'
+import {addFilmToWatched} from './add-to-watched'
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
