@@ -20,4 +20,3 @@ export const API_GENRES = [
     { id: 37, name: 'Western' },
   ];
 
-
