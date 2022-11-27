@@ -27,7 +27,7 @@ function renderMarkup() {
 let genres = movie.genre_ids.map(genre_id => { return (API_GENRES.find(genre => genre.id === genre_id)).name}).join(', ');
        
         return `
- <a id=${movie.id} class="gallery__poster-card" href="">
+ <a class="gallery__poster-card" href="">
   <img class="poster-card__image" src="https://image.tmdb.org/t/p/w780${
     movie.poster_path
   }" alt="" loading="lazy" />
