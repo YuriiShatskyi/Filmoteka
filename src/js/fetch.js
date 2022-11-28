@@ -130,5 +130,5 @@ function onInput(evt) {
 
   renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
 
-  searchQuery.innerHTML = '';
+  // searchQuery.innerHTML = '';
 }
