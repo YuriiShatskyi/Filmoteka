@@ -29,7 +29,7 @@ export async function fetchTrendingFilms() {
   }
 }
 
-function renderMarkup(callback, destination) {
+export function renderMarkup(callback, destination) {
   callback.then(movies => {
     // addPage()
 
@@ -95,7 +95,7 @@ function resetPage() {
 
 //     // функція пошуку по назві
 
-async function fetchSearchingFilms(query) {
+export async function fetchSearchingFilms(query) {
   refs.gallery.innerHTML = '';
   try {
     const response = await fetch(
@@ -108,6 +108,8 @@ async function fetchSearchingFilms(query) {
     console.error(error);
   }
 }
+
+// це треба перенести у fetch-request
 
 const inputForm = document.querySelector('.header__form');
 
