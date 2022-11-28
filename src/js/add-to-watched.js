@@ -5,7 +5,7 @@ const QUEUE_KEY = "queued-films";
 
 export function addFilmToWatched(data) {
    
-    document.querySelector('#watched').addEventListener('click', () => {
+    document.querySelector('#WATCHED').addEventListener('click', () => {
           
         const filmToAdd = data;              
              
@@ -25,7 +25,7 @@ export function addFilmToWatched(data) {
 
 export function addFilmToQueue(data) {
    
-    document.querySelector('#queue').addEventListener('click', () => {
+    document.querySelector('#QUEUE').addEventListener('click', () => {
           
         const filmToAdd = data;              
              
