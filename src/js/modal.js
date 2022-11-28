@@ -1,5 +1,6 @@
-import "./fetch"
-
+import "./fetch";
+import {addFilmToWatched} from './add-to-watched'
+import {addFilmToQueue} from './add-to-watched'
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -57,7 +58,9 @@ async function getMoviesByID(movieID) {
 
 export function moviesByID(movieID) {
     getMoviesByID(movieID).then(data => {
-    createModalFilmInfoMarkup(data);
+        createModalFilmInfoMarkup(data);
+        addFilmToWatched(data);
+        addFilmToQueue(data);
   });
 }
 
