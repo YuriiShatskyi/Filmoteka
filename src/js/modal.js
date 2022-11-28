@@ -1,5 +1,16 @@
 import "./fetch";
-import {addFilmToWatched} from './add-to-watched'
+import { addFilmToWatched } from './add-to-watched'
+
+import {
+  clickToWatchedInModal,
+  clickToQueueInModal,
+  movieIsInWatchedInModal,
+  movieIsInQueueInModal,
+  checkStorageLibrary,
+} from './library_watched_queqe';
+
+
+export let currentDataMovie = null;
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -13,6 +24,7 @@ const refs = {
 
 
 refs.openModalE.addEventListener('click', onMovieCLick);
+
 
 
 function onMovieCLick(event) {
@@ -60,6 +72,8 @@ export function moviesByID(movieID) {
     getMoviesByID(movieID).then(data => {
         createModalFilmInfoMarkup(data);
         addFilmToWatched(data);
+
+        
   });
 }
 
@@ -161,3 +175,29 @@ function closeModal() {
     document.removeEventListener('click', onClickClose);
     document.removeEventListener('keydown', onEscClose);
 }
+
+
+
+
+export const renderModal = async event => {
+  if (event.target.nodeName === 'BUTTON') {
+    return;
+  }
+  const cardsId = event.target.closest('li');
+
+
+  if (data) {
+    currentId = data.id;
+    checkOverview(data.overview);
+    openModal(event);
+    const refWatchedBtn = document.querySelector('.movie-data__button.movie-data__button_watched');
+
+    const refQueueBtn = document.querySelector('.movie-data__button.movie-data__button_queue');
+
+    refWatchedBtn.addEventListener('click', clickToWatchedInModal);
+    refQueueBtn.addEventListener('click', clickToQueueInModal);
+    checkStorageLibrary();
+    movieIsInWatchedInModal(refWatchedBtn);
+    movieIsInQueueInModal(refQueueBtn);
+  }
+};
