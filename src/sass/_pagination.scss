@@ -1,22 +1,65 @@
-.tui-pagination {
-    height: 40px;
-    margin: 0;
-    margin-top: 40px;
-    margin-bottom: 0;
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    min-height: 100;
+    padding: 10px;
 }
-.tui-pagination .tui-page-btn {
-    border: transparent;
-    height: 40px;
-    width: 40px;
-    padding-top: 13px;
-    font-weight: 500;
-    line-height: 1.33;
 
-    &:hover,
-    &:focus {
-        color: #ffffff;
-        background: #ff6b08;
-        border-color: #ff6b08;
-        border-radius: 5px;
-    }
+.pagination ul {
+    // width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pagination ul li {
+    color: #20B2AA;
+    list-style: none;
+    line-height: 45px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.pagination ul li.number {
+    list-style: none;
+    height: 45px;
+    width: 45px;
+    margin: 0 3px;
+    line-height: 45px;
+    border-radius: 50%;
+}
+
+.pagination ul li.number.first {
+    margin: 0px 3px 0 -5px;
+}
+
+.pagination ul li.number.last {
+    margin: 0px -5px 0 3px;
+}
+
+.pagination ul li.dots {
+    font-size: 22px;
+    cursor: default;
+}
+
+.pagination ul li.btn {
+    padding: 0 20px;
+    border-radius: 50px;
+}
+
+.pagination li.active,
+.pagination ul li.number:hover,
+.pagination ul li:first-child:hover,
+.pagination ul li:last-child:hover {
+    color: #fff;
+    background: orange;
 }

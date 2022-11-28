@@ -5,16 +5,16 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
-  nextPage: document.querySelector('#next-button'),
-  prevPage: document.querySelector('#prev-button'),
+  // nextPage: document.querySelector('#next-button'),
+  // prevPage: document.querySelector('#prev-button'),
 }
 
 let page = 1;
 
 // Слухачі
 
-refs.nextPage.addEventListener('click', onLoadMore)
-refs.prevPage.addEventListener('click', backOnLoadMore)
+// refs.nextPage.addEventListener('click', onLoadMore)
+// refs.prevPage.addEventListener('click', backOnLoadMore)
 
 
 export async function fetchTrendingFilms() {
@@ -68,37 +68,37 @@ renderMarkup(fetchTrendingFilms(), refs.gallery);
 
 
 // Функція для кнопки "next and back"
-function onLoadMore() {
-    addPage()
+// function onLoadMore() {
+//     addPage()
     
-    fetchTrendingFilms()
-        .then(renderMarkup)
+//     fetchTrendingFilms()
+//         .then(renderMarkup)
        
     
-}
+// }
 
 
-function backOnLoadMore() {
-    resetPage()
+// function backOnLoadMore() {
+//     resetPage()
     
-    fetchTrendingFilms()
-        .then(renderMarkup)
+//     fetchTrendingFilms()
+//         .then(renderMarkup)
        
     
-}
+// }
 
 
-//  функція , що б переходити на наступну сторінку
-    function addPage() { 
+// //  функція , що б переходити на наступну сторінку
+//     function addPage() { 
       
-        page += 1;
+//         page += 1;
             
-    }
+//     }
 
-// функція що б почати з початку з нового пошуку
-    function resetPage() { 
-        page = 1;
-    }
+// // функція що б почати з початку з нового пошуку
+//     function resetPage() { 
+//         page = 1;
+//     }
 //   function endOfPictures(params) {
     
 //   }
