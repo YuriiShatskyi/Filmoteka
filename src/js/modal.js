@@ -5,6 +5,7 @@ const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 const refs = {
+    body: document.querySelector("body"),
     openModalE: document.querySelector(".filmsModal"),
     modalFilmInfo: document.querySelector(".modal-movie"),
     backdropFilmModal: document.querySelector('.backdrop'),  
@@ -40,7 +41,7 @@ function onMovieCLick(event) {
 function openModal() {
   refs.backdropFilmModal.classList.remove('backdrop__is-hidden');  
   refs.modalFilmInfo.classList.remove('modal__is-hidden');
-  //refs.body.classList.add('no-scroll');
+  refs.body.classList.add('no-scroll');
 }
 
 
@@ -48,7 +49,6 @@ async function getMoviesByID(movieID) {
   try {
         const response = await fetch(`${BASE_URL}/movie/${movieID}?api_key=${API_KEY}&language=en-US`);
         const result = await response.json();
-        console.log(result);
         return result;
   } catch (error) {
         console.error(error);
@@ -82,23 +82,33 @@ function createModalFilmInfoMarkup({
     
 
     refs.modalFilmInfo.innerHTML = `<button type="button" class="modal__close-button">
-                <svg class="modal_icon icon" width="14" height="14">
-                    <use href="./images/icons.svg#icon-close"></use>
-                </svg>
-        </button>
+     <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        fill="currentColor"
+        class="modal__icon"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+        />
+      </svg>
+    </button>
+
     
         <div class="modal__card">
-        <div>
+        <div class="modal__wrapper">
             <img class="modal__img" src="${poster_path ? `${base_url}${size}${poster_path}` : imgPlaceholder}" alt="${title}">
         </div>
         
-        <div>
+        <div class="modal__filminfo">
             <h2 class="modal__title">${original_title}</h2>
         
             <table class="modal-movie-properties">
                 <tr class="modal-movie-properties__info">
                     <td class="modal-movie-properties__name">Vote / Votes</td>
-                    <td class="modal-movie-properties__value"><span id="vote" class="modal-movie-properties__vote">${vote_average.toFixed(1)}</span> /
+                    <td class="modal-movie-properties__value"><span id="vote" class="modal-movie-properties__vote">${vote_average.toFixed(1)}</span>  / 
                         <span id="votes">${vote_count}</span>
                     </td>
                 </tr>
@@ -143,7 +153,7 @@ function onClickClose(event) {
   if (
     event.target.classList.contains('backdrop') ||
     event.target.classList.contains('modal__close-button') |
-    event.target.classList.contains('modal_icon')) {
+    event.target.classList.contains('modal__icon')) {
     closeModal();
   }
 }
@@ -157,7 +167,7 @@ function onEscClose(event) {
 function closeModal() {
     refs.backdropFilmModal.classList.add('backdrop__is-hidden');  
     refs.modalFilmInfo.classList.add('modal__is-hidden');
-    //refs.body.classList.remove('no-scroll');
+    refs.body.classList.remove('no-scroll');
     document.removeEventListener('click', onClickClose);
     document.removeEventListener('keydown', onEscClose);
 }
