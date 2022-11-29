@@ -16,8 +16,7 @@
 
                           @media screen and (min-width: $tablet) {
                               flex-direction: row;
-                          }
-                       
+                          }                       
         }
 
         &__text {
@@ -41,13 +40,14 @@
             
             &:not(:last-child){
                 margin-right: 5px;
-            }
-        
+            }        
         }  
         
         &__icon-heart {
             margin-right: 10px;
             margin-left: 10px;
+
+            animation: heart 0.4s cubic-bezier(0.19, 0.57, 0.3, 0.98) infinite alternate;
         }
 
         &__button {
@@ -89,5 +89,14 @@
     border-right: 1px solid var(--grey-color-footer);
 }
 
+@keyframes heart {
+    from {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(1.4)
+    }
+}
 
 
