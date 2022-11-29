@@ -69,6 +69,7 @@ async function getMoviesByID(movieID) {
 export function moviesByID(movieID) {
     
     getMoviesByID(movieID).then(data => {
+        console.log(data);
         createModalFilmInfoMarkup(data);
       addFilmToWatched(data);
 
