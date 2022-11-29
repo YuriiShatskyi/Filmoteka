@@ -1,9 +1,12 @@
 import { API_GENRES } from "./genres-list";
+import { hideLoader } from "./loader";
 
 export function renderMarkup(callback, destination) {
+
  
     callback.then(movies => {
   
+      
       // addPage()
       
       const newMarkup = movies
@@ -28,7 +31,10 @@ export function renderMarkup(callback, destination) {
   `;
         })
         .join('');
+         hideLoader();
       destination.innerHTML = newMarkup;
       
     });
+   
+    
   }
