@@ -7,19 +7,20 @@ const refs = {
   
 refs.watchedBtn.addEventListener('click', renderWatched);
 refs.queueBtn.addEventListener('click', renderQueued);
-
+renderWatched();
 function renderQueued() {
     refs.watchedBtn.classList.remove("active");
     refs.queueBtn.classList.add("active");
-    const queuedMovies = JSON.parse(localStorage.getItem('queue-films'))
-    let uniqueObjArray = [...new Map(queuedMovies.map((item) => [item["id"], item])).values()];
-  console.log('queuedMovies', uniqueObjArray)
-    if (uniqueObjArray === null) {
+    const queuedMovies = JSON.parse(localStorage.getItem('queue-films'));
+    if (queuedMovies === null) {
         
         const placeholder = `<p>Your list is empty(</p>`
         refs.gallery.innerHTML = placeholder;
         return
     }
+    let uniqueObjArray = [...new Map(queuedMovies.map((item) => [item["id"], item])).values()];
+  console.log('queuedMovies', uniqueObjArray)
+    
     const newMarkup = uniqueObjArray.map(movie => {
    
         return `
@@ -47,14 +48,15 @@ function renderWatched() {
     refs.queueBtn.classList.remove("active");
     refs.watchedBtn.classList.add("active");
     const watchedMovies = JSON.parse(localStorage.getItem('watched-films'))
-    let uniqueObjArray = [...new Map(watchedMovies.map((item) => [item["id"], item])).values()];
-  console.log('queuedMovies', uniqueObjArray)
-    if (uniqueObjArray === null) {
+    if (watchedMovies === null) {
         
         const placeholder = `<p>Your list is empty(</p>`
         refs.gallery.innerHTML = placeholder;
         return
     }
+    let uniqueObjArray = [...new Map(watchedMovies.map((item) => [item["id"], item])).values()];
+  console.log('queuedMovies', uniqueObjArray)
+    
     const newMarkup = uniqueObjArray.map(movie => {
    
         return `
@@ -77,3 +79,4 @@ function renderWatched() {
       .join('');
     refs.gallery.innerHTML = newMarkup;
 }
+
