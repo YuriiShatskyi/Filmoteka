@@ -1,4 +1,6 @@
 import "./fetch";
+import "./render-card-markup";
+import "./search-film";
 
 import { hideLoader, showLoader } from "./loader";
 
