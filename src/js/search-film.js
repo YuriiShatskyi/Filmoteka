@@ -1,22 +1,25 @@
-import { renderMarkup } from "./render-card-markup";
-import {fetchSearchingFilms} from "./fetch";
+import { renderMarkup } from './render-card-markup';
+import { fetchSearchingFilms } from './fetch';
 
 const refs = {
-    gallery: document.querySelector('.gallery'),
-    // nextPage: document.querySelector('#next-button'),
-    // prevPage: document.querySelector('#prev-button'),
-  }
-  
+  gallery: document.querySelector('.gallery'),
+  inputForm: document.querySelector('.header__form'),
+};
 
-const inputForm = document.querySelector('.header__form');
-
-inputForm.addEventListener('submit', onInput);
+refs.inputForm.addEventListener('submit', onInput);
 
 function onInput(evt) {
   evt.preventDefault();
 
-  const searchQuery  = evt.currentTarget.elements.query.value;
-  console.log(searchQuery);
+  const searchQuery = evt.currentTarget.elements.query.value;
 
- renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
+  if (searchQuery.trim() === '') {
+    alert(
+      'Search result not successful. Enter the correct movie name and try again'
+    );
+    return;
+  }
+
+  renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
+  evt.target.reset();
 }
