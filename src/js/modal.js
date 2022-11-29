@@ -1,6 +1,10 @@
 import "./fetch";
-import { addFilmToWatched } from './add-to-watched';
+
 import { hideLoader, showLoader } from "./loader";
+
+import { addFilmToWatched } from './add-to-watched'
+import { addFilmToQueue} from './add-to-queue'
+
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
