@@ -1,7 +1,6 @@
-
-import { renderMarkup } from "./render-card-markup";
-import {fetchSearchingFilms} from "./fetch";
-import { showLoader } from "./loader";
+import { renderMarkup } from './render-card-markup';
+import { fetchSearchingFilms } from './fetch';
+import { showLoader } from './loader';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -24,11 +23,8 @@ function onInput(evt) {
 
   renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
   evt.target.reset();
-}
 
   refs.gallery.innerHTML = '';
-  
- showLoader();
 
+  showLoader();
 }
-
