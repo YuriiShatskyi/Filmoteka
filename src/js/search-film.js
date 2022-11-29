@@ -1,5 +1,6 @@
 import { renderMarkup } from "./render-card-markup";
 import {fetchSearchingFilms} from "./fetch";
+import { showLoader } from "./loader";
 
 const refs = {
     gallery: document.querySelector('.gallery'),
@@ -14,9 +15,12 @@ inputForm.addEventListener('submit', onInput);
 
 function onInput(evt) {
   evt.preventDefault();
-
+  refs.gallery.innerHTML = '';
+  
+ showLoader();
   const searchQuery  = evt.currentTarget.elements.query.value;
   console.log(searchQuery);
 
  renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
+
 }
