@@ -1,6 +1,10 @@
 import "./fetch";
+
+import { hideLoader, showLoader } from "./loader";
+
 import { addFilmToWatched } from './add-to-watched'
 import { addFilmToQueue} from './add-to-queue'
+
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -18,6 +22,7 @@ refs.openModalE.addEventListener('click', onMovieCLick);
 
 
 function onMovieCLick(event) {
+    showLoader();
     refs.modalFilmInfo.innerHTML = '';
     
     const isCard = event.target.closest('.gallery__poster-card');
@@ -31,9 +36,8 @@ function onMovieCLick(event) {
     const movieId = isCard.getAttribute('id');
         
     openModal();
-
-    moviesByID(movieId);
-   
+    
+    moviesByID(movieId);    
 
     document.addEventListener('keydown', onEscClose);
     document.addEventListener('click', onClickClose);
@@ -58,11 +62,16 @@ async function getMoviesByID(movieID) {
 
 
 export function moviesByID(movieID) {
+  
     getMoviesByID(movieID).then(data => {
         createModalFilmInfoMarkup(data);
+
       addFilmToWatched(data);
-      addFilmToQueue(data);
-  });
+    
+      addFilmToWatched(data);
+        hideLoader();  
+    });
+
 }
 
 
