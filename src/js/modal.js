@@ -20,7 +20,7 @@ const refs = {
   };
 
 
-refs.openModalE.addEventListener('click', onMovieCLick);
+// refs.openModalE.addEventListener('click', onMovieCLick);
 
 
 function onMovieCLick(event) {
