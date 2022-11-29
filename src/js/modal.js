@@ -68,7 +68,7 @@ export function moviesByID(movieID) {
 
       addFilmToWatched(data);
     
-      addFilmToWatched(data);
+      addFilmToQueue(data);
         hideLoader();  
     });
 
