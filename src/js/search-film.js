@@ -27,6 +27,8 @@ function onInput(evt) {
   refs.gallery.innerHTML = '';
 
 
+
   showLoader();
 }
+
 

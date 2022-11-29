@@ -10,6 +10,7 @@ export function addFilmToWatched(data) {
     addToWatchedButton.addEventListener('click', () => {
        const filmToAdd = data; 
 
+
        if (addToWatchedButton.textContent === 'add to watched') {
            
            addToWatchedButton.textContent = 'remove from watched';
@@ -34,6 +35,7 @@ export function addFilmToWatched(data) {
     }
     )
 }
+
 
 
 
