@@ -9,6 +9,11 @@
   @media screen and (min-width: 1280px) {
     width: 394px;
   }
+
+  &:hover {
+    transform: scale(1.05);
+    transition: var(--main-transition);
+  }
 }
 
 .poster-card__image {
