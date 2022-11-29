@@ -1,47 +1,39 @@
+import {removeMovie} from './remove-movie'
+
 const listFilmToWatched = [];
 const STORAGE_KEY = "watched-films";
 
 export function addFilmToWatched(data) {
+    const filmToAdd = data;
+    const addToWatchedButton = document.querySelector('#watched');
    
-    document.querySelector('#watched').addEventListener('click', () => {
-          
-        const filmToAdd = data;              
-             
+    addToWatchedButton.addEventListener('click', () => {
+       const filmToAdd = data; 
+
+
+       if (addToWatchedButton.textContent === 'add to watched') {
+           
+           addToWatchedButton.textContent = 'remove from watched';
+                              
         if (!listFilmToWatched.includes(filmToAdd)) {
-            
-                listFilmToWatched.push(filmToAdd)
+            listFilmToWatched.push(filmToAdd)
         }
-        console.log(listFilmToWatched)
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
-    })
-}
+                console.log(listFilmToWatched)
+           localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
+           return listFilmToWatched;
+       }
+       
+       if (addToWatchedButton.textContent === 'remove from watched') {
+           
+           removeMovie(listFilmToWatched, filmToAdd)
+           addToWatchedButton.textContent = 'add to watched';
 
-// export function addFilmToQueue(data) {
-   
-//     document.querySelector('#QUEUE').addEventListener('click', () => {
-          
-//         const filmToAdd = data;              
-             
-//         if (!listFilmToQueued.includes(filmToAdd)) {
-            
-//             listFilmToQueued.push(filmToAdd)
-//             removeMovie(listFilmToWatched, filmToAdd)
-//         }
-        
-//         console.log('QUEUE -', listFilmToQueued)
-//         console.log('WATCHED -', listFilmToWatched)
-//         localStorage.setItem(QUEUE_KEY, JSON.stringify(listFilmToQueued))
-//         localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
-//     })
-// }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
+           return listFilmToWatched;
+       }      
 
-
-function removeMovie(arr, value) {
-  const index = arr.indexOf(value);
-    if (index > -1) {
-    arr.splice(index, 1);
-  }
-  return arr;
+    }
+    )
 }
 
 
