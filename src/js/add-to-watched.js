@@ -16,24 +16,24 @@ export function addFilmToWatched(data) {
     })
 }
 
-export function addFilmToQueue(data) {
+// export function addFilmToQueue(data) {
    
-    document.querySelector('#QUEUE').addEventListener('click', () => {
+//     document.querySelector('#QUEUE').addEventListener('click', () => {
           
-        const filmToAdd = data;              
+//         const filmToAdd = data;              
              
-        if (!listFilmToQueued.includes(filmToAdd)) {
+//         if (!listFilmToQueued.includes(filmToAdd)) {
             
-            listFilmToQueued.push(filmToAdd)
-            removeMovie(listFilmToWatched, filmToAdd)
-        }
+//             listFilmToQueued.push(filmToAdd)
+//             removeMovie(listFilmToWatched, filmToAdd)
+//         }
         
-        console.log('QUEUE -', listFilmToQueued)
-        console.log('WATCHED -', listFilmToWatched)
-        localStorage.setItem(QUEUE_KEY, JSON.stringify(listFilmToQueued))
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
-    })
-}
+//         console.log('QUEUE -', listFilmToQueued)
+//         console.log('WATCHED -', listFilmToWatched)
+//         localStorage.setItem(QUEUE_KEY, JSON.stringify(listFilmToQueued))
+//         localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
+//     })
+// }
 
 
 function removeMovie(arr, value) {
