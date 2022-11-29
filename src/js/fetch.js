@@ -21,7 +21,6 @@ let page = 1;
 
 export async function fetchTrendingFilms() {
   try {    
-    
     const response = await fetch(
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
     );
@@ -30,12 +29,11 @@ export async function fetchTrendingFilms() {
     return result.results;
   } catch (error) {
     console.error(error);
-  } 
+  }
 }
 
 export async function fetchSearchingFilms(searchQuery) {
   try {
-    
     const response = await fetch(
            `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`
     );
@@ -44,57 +42,14 @@ export async function fetchSearchingFilms(searchQuery) {
     return result.results;
   } catch (error) {
     console.error(error);
-  } 
+  }
 }
 
 
-showLoader();
+// showLoader();
 renderMarkup(fetchTrendingFilms(), refs.gallery);
-
+// hideLoader();
 
 // // =============================================
 
 
-// Функція для кнопки "next and back"
-// function onLoadMore() {
-//     addPage()
-    
-//     fetchTrendingFilms()
-//         .then(renderMarkup)
-       
-    
-// }
-
-
-// function backOnLoadMore() {
-//     resetPage()
-    
-//     fetchTrendingFilms()
-//         .then(renderMarkup)
-       
-    
-// }
-
-
-// //  функція , що б переходити на наступну сторінку
-//     function addPage() { 
-      
-//         page += 1;
-            
-//     }
-
-// // функція що б почати з початку з нового пошуку
-//     function resetPage() { 
-//         page = 1;
-//     }
-//   function endOfPictures(params) {
-    
-//   }
-
-//     // функція пошуку по назві
-
-
-
-// showLoader();
-// renderMarkup(fetchSearchingFilms(), refs.gallery);
-// hideLoader();
