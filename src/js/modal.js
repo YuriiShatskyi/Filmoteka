@@ -5,7 +5,9 @@ import "./search-film";
 import { hideLoader, showLoader } from "./loader";
 
 import { addFilmToWatched } from './add-to-watched'
-import { addFilmToQueue} from './add-to-queue'
+import { addFilmToQueue } from './add-to-queue'
+
+import { watchedTrailer } from "./you-tube";
 
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
@@ -16,7 +18,8 @@ const refs = {
     openModalE: document.querySelector(".filmsModal"),
     modalFilmInfo: document.querySelector(".modal-movie"),
     backdropFilmModal: document.querySelector('.backdrop'),  
-    closeModalBtn: document.querySelector("modal__close-button"),
+  closeModalBtn: document.querySelector("modal__close-button"),
+    
   };
 
 
@@ -64,13 +67,17 @@ async function getMoviesByID(movieID) {
 
 
 export function moviesByID(movieID) {
-  
+    
     getMoviesByID(movieID).then(data => {
+        console.log(data);
         createModalFilmInfoMarkup(data);
 
-        addFilmToWatched(data, movieID);
-    
-        addFilmToQueue(data);
+      addFilmToWatched(data);
+
+       watchedTrailer(data)
+
+      addFilmToQueue(data);
+
         hideLoader();  
     });
 
@@ -184,3 +191,5 @@ function closeModal() {
     document.removeEventListener('click', onClickClose);
     document.removeEventListener('keydown', onEscClose);
 }
+
+
