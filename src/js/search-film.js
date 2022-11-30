@@ -11,6 +11,7 @@ refs.inputForm.addEventListener('submit', onInput);
 
 function onInput(evt) {
   evt.preventDefault();
+  refs.gallery.innerHTML = '';
   showLoader();
 
   const searchQuery = evt.currentTarget.elements.query.value;
@@ -25,7 +26,7 @@ function onInput(evt) {
   renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
   evt.target.reset();
 
-  refs.gallery.innerHTML = '';
+  
 
 
 

@@ -1,4 +1,4 @@
-import { hideLoader} from "./loader";
+import { showLoader} from "./loader";
 import { renderMarkup } from "./render-card-markup";
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
@@ -29,9 +29,7 @@ export async function fetchTrendingFilms() {
   } catch (error) {
     console.error(error);
   }
-  finally{
-    hideLoader();
-  }
+
 }
 
 export async function fetchSearchingFilms(searchQuery) {
@@ -45,12 +43,10 @@ export async function fetchSearchingFilms(searchQuery) {
   } catch (error) {
     console.error(error);
   }
-  finally{
-    hideLoader();
-  }
+
 }
 
-
+showLoader();
 renderMarkup(fetchTrendingFilms(), refs.gallery);
 
 
