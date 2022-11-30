@@ -55,8 +55,36 @@
   }
 }
 
+.info-item {
+  display: flex;
+   align-items: center;
+}
+
+
 .info-item.title {
   line-height: 1.16;
   text-transform: uppercase;
   color: var(--dominant-color);
+}
+
+.vote-container {
+  display: flex;
+
+  justify-content: center;
+align-items: center;
+  width: 36px;
+  height: 16px;
+  font-weight: 500;
+  font-size: 12px;
+line-height: 1.16;
+  background-color: var(--button-accent-color);
+  color: var(--secondary-color);
+  border-radius: 5px;
+  margin-left: 8px;
+  
+  @media screen and (min-width: 1280px) {
+    width: 40px;
+    height: 20px;
+  
+}
 }
