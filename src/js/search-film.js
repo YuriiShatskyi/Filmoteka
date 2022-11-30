@@ -2,11 +2,16 @@ import { renderMarkup } from './render-card-markup';
 import { fetchSearchingFilms } from './fetch';
 import { showLoader } from './loader';
 import { hideLoader } from './loader';
+import { refs } from "./refs";
 
-const refs = {
-  gallery: document.querySelector('.gallery'),
-  inputForm: document.querySelector('.header__form'),
-};
+
+// const refs = {
+//   gallery: document.querySelector('.gallery'),
+//   inputForm: document.querySelector('.header__form'),
+// };
+
+
+export let searchQuery = '';
 
 refs.inputForm.addEventListener('submit', onInput);
 
@@ -14,16 +19,20 @@ refs.inputForm.addEventListener('submit', onInput);
 
 function onInput(evt) {
   evt.preventDefault();
-  refs.gallery.innerHTML = '';
+  
+ 
   showLoader();
   const searchQuery = evt.currentTarget.elements.query.value;
+
 
   if (searchQuery.trim() === '') {
     alert(
       'Search result not successful. Enter the correct movie name and try again'
     );
+    hideLoader();
     return;
   }
+
 
   fetchSearchingFilms(searchQuery)
     .then(data => {
@@ -40,5 +49,4 @@ function onInput(evt) {
 
   hideLoader();
 
-  evt.target.reset();
 }

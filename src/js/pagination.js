@@ -1,25 +1,25 @@
-// import './fetch';
-// import { renderMarkup } from './render-card-markup';
-// import { refs } from './fetch';
+
 import { API_GENRES } from "./genres-list";
+import { refs } from "./refs";
+
+import { currentURL, fetchSearchingFilms, fetchTrendingFilms } from "./fetch";
+import { renderMarkup } from "./render-card-markup";
+import { searchQuery } from "./search-film";
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-const refs = {
-  gallery: document.querySelector('.gallery'),
-}
-
-let page = 2;
 
 
-// import { page } from './fetch';
+export let page = 1;
+
+
+
 const pagination = document.querySelector(".pagination ul");
-// const nextPage = document.querySelector(".btn next");
-// const prevPage = document.querySelector(".btn prev");
 
+let callback = '';
 let totalPages = 10;
-// let page = 6;
+
 // виклик функції з передачею параметрів і додаванням внутрішнього елемента, який є тегом ul
 pagination.innerHTML = createPagination(totalPages, page);
 
@@ -81,93 +81,122 @@ function createPagination(totalPages, page) {
 }
 pagination.addEventListener('click', handlerPagination);
 
+function getCurrentURL() { 
+  if (currentURL == "trendingFilmsURL" ){
+  callback = fetchTrendingFilms();
+  return callback
+}
+if (currentURL == "searchingFilmsURL" ){
+  callback = fetchSearchingFilms();
+  return callback
+}
+
+}
+
+
+
 export function handlerPagination(evt) {
-  fetchTrendingFilms(fetchSearchingFilms(), refs.gallery)
-  page ++
+
   
   if (evt.target.nodeName !== 'LI') {
     return
   }
   if (evt.target.textContent === "Prev") {
+    page -= 1;
+    getCurrentURL();
+    renderMarkup(callback, refs.gallery);
+    pagination.innerHTML = createPagination(totalPages, page);
+    console.log(page);
    
     return;
   }
   if (evt.target.textContent === "Next") {
-   
+    page += 1;
+    getCurrentURL();
+    renderMarkup(callback, refs.gallery);
+    pagination.innerHTML = createPagination(totalPages, page);
+    console.log(page);
     return;
   }
   if (evt.target.textContent === "...") {
     return
   }
   page = evt.target.textContent;
+  getCurrentURL();
+    renderMarkup(callback, refs.gallery);
+    console.log(page);
 
 }
-export async function fetchTrendingFilms() {
-  try {    
-    const response = await fetch(
-      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
-    );
-    const result = await response.json();
-    console.log(result.results);
-    return result.results;
-  } catch (error) {
-    console.error(error);
-  }
-  pagination.innerHTML = createPagination(totalPages, page);
-  pagination.addEventListener('click', handlerPagination);
-};
 
-export async function fetchSearchingFilms(searchQuery) {
-  try {
-    const response = await fetch(
-           `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`
-    );
-    const result = await response.json();
-    console.log(result.results);
-    return result.results;
-  } catch (error) {
-    console.error(error);
-  }
-  pagination.innerHTML = createPagination(totalPages, page);
-
-   pagination.addEventListener('click', handlerPagination);
-}
+pagination.addEventListener('click', handlerPagination);
 
 
-export function renderMarkup(callback, destination) {
+// export async function fetchTrendingFilms() {
+//   try {    
+//     const response = await fetch(
+//       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
+//     );
+//     const result = await response.json();
+//     console.log(result.results);
+//     return result.results;
+//   } catch (error) {
+//     console.error(error);
+//   }
+//   pagination.innerHTML = createPagination(totalPages, page);
+//   pagination.addEventListener('click', handlerPagination);
+// };
+
+// export async function fetchSearchingFilms(searchQuery) {
+//   try {
+//     const response = await fetch(
+//            `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`
+//     );
+//     const result = await response.json();
+//     console.log(result.results);
+//     return result.results;
+//   } catch (error) {
+//     console.error(error);
+//   }
+//   pagination.innerHTML = createPagination(totalPages, page);
+
+//    pagination.addEventListener('click', handlerPagination);
+// }
+
+
+// export function renderMarkup(callback, destination) {
  
-    callback.then(movies => {
+//     callback.then(movies => {
   
-      // addPage()
+//       // addPage()
       
-      const newMarkup = movies
-        .map(movie => {
-  let genres = movie.genre_ids.map(genre_id => { return (API_GENRES.find(genre => genre.id === genre_id)).name}).join(', ');
+//       const newMarkup = movies
+//         .map(movie => {
+//   let genres = movie.genre_ids.map(genre_id => { return (API_GENRES.find(genre => genre.id === genre_id)).name}).join(', ');
          
-          return `
-   <a id=${movie.id} class="gallery__poster-card" href="">
-    <img class="poster-card__image" src="https://image.tmdb.org/t/p/w780${
-      movie.poster_path
-    }" alt="" loading="lazy" />
-    <div class="poster-card__info">
-      <p class="info-item title">
-        ${movie.original_title}
-      </p>
-      <p class="info-item">
-      ${genres} | ${movie.release_date.substring(0, 4)}
-      </p>
+//           return `
+//    <a id=${movie.id} class="gallery__poster-card" href="">
+//     <img class="poster-card__image" src="https://image.tmdb.org/t/p/w780${
+//       movie.poster_path
+//     }" alt="" loading="lazy" />
+//     <div class="poster-card__info">
+//       <p class="info-item title">
+//         ${movie.original_title}
+//       </p>
+//       <p class="info-item">
+//       ${genres} | ${movie.release_date.substring(0, 4)}
+//       </p>
     
-    </div>
-    </a>
-  `;
-        })
-        .join('');
-      destination.innerHTML = newMarkup;
+//     </div>
+//     </a>
+//   `;
+//         })
+//         .join('');
+      // destination.innerHTML = newMarkup;
       pagination.innerHTML = createPagination(totalPages, page);
       pagination.addEventListener('click', handlerPagination);
 
-    });
-};
+//     });
+// };
 // pagination.addEventListener('click', onPageBtnClick);
    
   
