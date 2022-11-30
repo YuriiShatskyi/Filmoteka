@@ -68,9 +68,9 @@ export function moviesByID(movieID) {
     getMoviesByID(movieID).then(data => {
         createModalFilmInfoMarkup(data);
 
-      addFilmToWatched(data);
+        addFilmToWatched(data, movieID);
     
-      addFilmToQueue(data);
+        addFilmToQueue(data);
         hideLoader();  
     });
 
