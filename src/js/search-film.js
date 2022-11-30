@@ -1,11 +1,12 @@
 import { renderMarkup } from './render-card-markup';
 import { fetchSearchingFilms } from './fetch';
 import { showLoader } from './loader';
+import { refs } from "./refs";
 
-const refs = {
-  gallery: document.querySelector('.gallery'),
-  inputForm: document.querySelector('.header__form'),
-};
+// const refs = {
+//   gallery: document.querySelector('.gallery'),
+//   inputForm: document.querySelector('.header__form'),
+// };
 
 refs.inputForm.addEventListener('submit', onInput);
 

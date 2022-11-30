@@ -8,26 +8,26 @@ import { addFilmToWatched } from './add-to-watched'
 import { addFilmToQueue } from './add-to-queue'
 
 import { watchedTrailer } from "./you-tube";
-
+import { refs } from "./refs";
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-const refs = {
-    body: document.querySelector("body"),
-    openModalE: document.querySelector(".filmsModal"),
-    modalFilmInfo: document.querySelector(".modal-movie"),
-    backdropFilmModal: document.querySelector('.backdrop'),  
-  closeModalBtn: document.querySelector("modal__close-button"),
+// const refs = {
+//     body: document.querySelector("body"),
+//     openModalE: document.querySelector(".filmsModal"),
+//     modalFilmInfo: document.querySelector(".modal-movie"),
+//     backdropFilmModal: document.querySelector('.backdrop'),  
+//   closeModalBtn: document.querySelector("modal__close-button"),
     
-  };
+//   };
 
 
 refs.openModalE.addEventListener('click', onMovieCLick);
 
 
 function onMovieCLick(event) {
-  showLoader(); 
+  // showLoader(); 
   refs.modalFilmInfo.innerHTML = '';
   
   event.preventDefault();  
@@ -42,9 +42,11 @@ function onMovieCLick(event) {
     }
     
     const movieId = isCard.getAttribute('id');
-        
-    openModal();
     
+    showLoader();      
+    
+    openModal();
+  
 
     moviesByID(movieId);    
 

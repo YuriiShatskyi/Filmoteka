@@ -4,11 +4,13 @@ import { renderMarkup } from "./render-card-markup";
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-const refs = {
-  gallery: document.querySelector('.gallery'),
+import { refs } from "./refs";
+
+// const refs = {
+//   gallery: document.querySelector('.gallery'),
   // nextPage: document.querySelector('#next-button'),
   // prevPage: document.querySelector('#prev-button'),
-}
+// }
 
 let page = 1;
 

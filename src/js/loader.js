@@ -1,6 +1,8 @@
-const refs = {
-    bouncer: document.querySelector('.js-bouncer')
-}
+// const refs = {
+//     bouncer: document.querySelector('.js-bouncer')
+// }
+
+import { refs } from "./refs";
 
 console.log(refs.bouncer)
 

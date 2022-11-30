@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, set, ref, update } from "firebase/database";
-
+import { refs } from "./refs";
 
 
 const firebaseConfig = {
@@ -12,12 +12,12 @@ const firebaseConfig = {
   messagingSenderId: "353866619505",
   appId: "1:353866619505:web:2ad78541afaacda309d9d0"
 };
-const refs = {
-    openAuthModalBtn: document.querySelector("[data-auth-modal-open]"),
-    closeAuthModal: document.querySelector("[data-auth-modal-close]"),
-    modalAuth: document.querySelector("[data-auth-modal]"),
-    body: document.querySelector("body"),
-  };
+// const refs = {
+//     openAuthModalBtn: document.querySelector("[data-auth-modal-open]"),
+//     closeAuthModal: document.querySelector("[data-auth-modal-close]"),
+//     modalAuth: document.querySelector("[data-auth-modal]"),
+//     body: document.querySelector("body"),
+//   };
   console.log(refs.openAuthModalBtn);
   renderAuthModal();
 const app = initializeApp(firebaseConfig);

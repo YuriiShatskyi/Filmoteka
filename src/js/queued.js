@@ -1,9 +1,11 @@
-const refs = {
-    watchedBtn: document.querySelector(".wached-btn"),
-    queueBtn: document.querySelector(".queue-btn"),
-    gallery: document.querySelector('.gallery'),
-    openModalE: document.querySelector(".filmsModal"),
-};
+import { refs } from "./refs";
+
+// const refs = {
+//     watchedBtn: document.querySelector(".wached-btn"),
+//     queueBtn: document.querySelector(".queue-btn"),
+//     gallery: document.querySelector('.gallery'),
+//     openModalE: document.querySelector(".filmsModal"),
+// };
   
 refs.watchedBtn.addEventListener('click', renderWatched);
 refs.queueBtn.addEventListener('click', renderQueued);
