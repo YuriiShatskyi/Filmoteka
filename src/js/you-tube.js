@@ -30,6 +30,7 @@ export function watchedTrailer(data) {
     document.querySelector('#trailer').addEventListener('click', () => {
     
        const movieID = data.id
+        console.log(movieID);
     
       getTrailerByID(movieID);
 

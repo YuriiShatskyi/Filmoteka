@@ -22,6 +22,8 @@ function onInput(evt) {
   
  
   showLoader();
+
+
   const searchQuery = evt.currentTarget.elements.query.value;
 
 
@@ -49,4 +51,5 @@ function onInput(evt) {
   hideLoader();
 
   evt.target.reset();
+
 }

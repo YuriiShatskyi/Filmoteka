@@ -11,16 +11,6 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 import { refs } from "./refs";
 
-// const refs = {
-//   gallery: document.querySelector('.gallery'),
-  // nextPage: document.querySelector('#next-button'),
-  // prevPage: document.querySelector('#prev-button'),
-
-
-};
-
-
-export let currentURL = '';
 
 export let currentURL = '';
 
@@ -31,6 +21,7 @@ export async function fetchTrendingFilms() {
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
     );
     const result = await response.json();
+
     currentURL = "trendingFilmsURL";
 
     return result.results;
