@@ -33,7 +33,6 @@ function onInput(evt) {
     return;
   }
 
-
   fetchSearchingFilms(searchQuery)
     .then(data => {
       if (data.length === 0) {
@@ -49,4 +48,5 @@ function onInput(evt) {
 
   hideLoader();
 
+  evt.target.reset();
 }
