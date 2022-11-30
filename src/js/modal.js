@@ -27,12 +27,15 @@ refs.openModalE.addEventListener('click', onMovieCLick);
 
 
 function onMovieCLick(event) {
-    showLoader();
-    refs.modalFilmInfo.innerHTML = '';
+  showLoader(); 
+  refs.modalFilmInfo.innerHTML = '';
+  
+  event.preventDefault();  
+    
     
     const isCard = event.target.closest('.gallery__poster-card');
 
-    event.preventDefault();
+    
 
     if (!isCard) {
         return;
@@ -42,6 +45,7 @@ function onMovieCLick(event) {
         
     openModal();
     
+
     moviesByID(movieId);    
 
     document.addEventListener('keydown', onEscClose);
@@ -70,13 +74,12 @@ export function moviesByID(movieID) {
     
     getMoviesByID(movieID).then(data => {
         console.log(data);
-        createModalFilmInfoMarkup(data);
+      createModalFilmInfoMarkup(data);
+      
       addFilmToWatched(data);
-
-       watchedTrailer(data)
-
+      watchedTrailer(data)
       addFilmToQueue(data);
-        hideLoader();  
+      hideLoader();  
     });
 
 }
