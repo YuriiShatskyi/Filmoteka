@@ -1,7 +1,10 @@
 import { renderMarkup } from './render-card-markup';
 import { fetchSearchingFilms } from './fetch';
-import { showLoader, hideLoader } from './loader';
+import { showLoader } from './loader';
+import { hideLoader } from './loader';
+
 import { refs } from "./refs";
+
 
 // const refs = {
 //   gallery: document.querySelector('.gallery'),
@@ -13,13 +16,16 @@ export let searchQuery = '';
 
 refs.inputForm.addEventListener('submit', onInput);
 
+// search function by "input"
+
 function onInput(evt) {
   evt.preventDefault();
   page = 1;
  
   showLoader();
 
-  searchQuery = evt.currentTarget.elements.query.value;
+  const searchQuery = evt.currentTarget.elements.query.value;
+
 
   if (searchQuery.trim() === '') {
     alert(
@@ -29,14 +35,22 @@ function onInput(evt) {
     return;
   }
 
-  renderMarkup(fetchSearchingFilms(), refs.gallery);
+
+  fetchSearchingFilms(searchQuery)
+    .then(data => {
+      if (data.length === 0) {
+        alert(
+          'Search result not successful. Enter the correct movie name and try again'
+        );
+        return;
+      }
+
+
+      renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
+    })
+    .catch(error => alert(`${error}`));
+
+  hideLoader();
+
   evt.target.reset();
-
-  
-
-
-
-
 }
-
-
