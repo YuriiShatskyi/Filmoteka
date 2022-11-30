@@ -23,7 +23,9 @@ function onInput(evt) {
  
   showLoader();
 
+
   const searchQuery = evt.currentTarget.elements.query.value;
+
 
   if (searchQuery.trim() === '') {
     alert(
@@ -33,7 +35,6 @@ function onInput(evt) {
     return;
   }
 
-
   fetchSearchingFilms(searchQuery)
     .then(data => {
       if (data.length === 0) {
@@ -42,7 +43,6 @@ function onInput(evt) {
         );
         return;
       }
-
 
       renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
     })
