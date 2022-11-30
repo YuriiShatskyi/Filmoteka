@@ -1,36 +1,46 @@
 import { removeMovie } from './remove-movie';
 
-const listFilmToQueue = [];
 const STORAGE_KEY = "queue-films";
 
+let listFilmToQueue;
+const filmListFromStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+filmListFromStorage ? listFilmToQueue = filmListFromStorage : listFilmToQueue = [];
+
+
 export function addFilmToQueue(data) {
+    
     const filmToAdd = data;
     const addToQueueButton = document.querySelector('#queue');
+    
+if (listFilmToQueue.some(film=> film.id==data.id)) {
+            addToQueueButton.textContent = 'remove from queue';  
+        }  
+
    
     addToQueueButton.addEventListener('click', () => {
-       const filmToAdd = data; 
+        const filmToAdd = data; 
+             
+        addToQueueButton.textContent = 'remove from queue';
 
-       if (addToQueueButton.textContent === 'add to queue') {
-           
-           addToQueueButton.textContent = 'remove from queue';
-                              
-        if (!listFilmToQueue.includes(filmToAdd)) {
-            listFilmToQueue.push(filmToAdd)
-        }
-            console.log(listFilmToQueue)
-           localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToQueue))
-           return listFilmToQueue;
-       }
-       
-       if (addToQueueButton.textContent === 'remove from queue') {
-           
-           removeMovie(listFilmToQueue, filmToAdd)
-           addToQueueButton.textContent = 'add to queue';
+        if (!listFilmToQueue.some(film => film.id===data.id)) {
+            listFilmToQueue.push(filmToAdd);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToQueue));
+            return listFilmToQueue;              
+        }   
+        
+        
+        if (listFilmToQueue.some(film => film.id === data.id)) {
+            
+            const filmToRemove = listFilmToQueue.find(el=> el.id===data.id)
+
+            removeMovie(listFilmToQueue, filmToRemove)
+               
+            addToQueueButton.textContent = 'add to queue';
 
             localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToQueue))
-           return listFilmToQueue;
-       }      
-
-    }
-    )
+            return listFilmToQueue;
+       }   
+                     
+    })         
+    
 }
