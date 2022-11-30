@@ -1,6 +1,6 @@
 import { renderMarkup } from './render-card-markup';
 import { fetchSearchingFilms } from './fetch';
-import { showLoader } from './loader';
+import { showLoader, hideLoader } from './loader';
 import { refs } from "./refs";
 
 // const refs = {
@@ -21,6 +21,7 @@ function onInput(evt) {
     alert(
       'Search result not successful. Enter the correct movie name and try again'
     );
+    hideLoader();
     return;
   }
 
