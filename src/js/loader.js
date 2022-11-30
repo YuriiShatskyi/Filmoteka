@@ -1,8 +1,4 @@
-const refs = {
-    bouncer: document.querySelector('.js-bouncer')
-}
-
-console.log(refs.bouncer)
+import { refs } from "./refs";
 
 export function hideLoader() {
     refs.bouncer.classList.add('is-hidden')
