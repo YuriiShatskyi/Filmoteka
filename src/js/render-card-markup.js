@@ -31,7 +31,7 @@ export function renderMarkup(callback, destination) {
   `;
         })
         .join('');
-         hideLoader();
+        
       destination.innerHTML = newMarkup;
       
     });
