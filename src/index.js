@@ -1,3 +1,5 @@
+import './js/refs';
+
 import './js/fetch';
 import './js/button-scroll-to-top';
 import './js/modal';
