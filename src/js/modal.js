@@ -74,12 +74,15 @@ export function moviesByID(movieID) {
     
     getMoviesByID(movieID).then(data => {
         console.log(data);
-      createModalFilmInfoMarkup(data);
-      
+
+        createModalFilmInfoMarkup(data);
+
       addFilmToWatched(data);
       watchedTrailer(data)
       addFilmToQueue(data);
-      hideLoader();  
+
+
+        hideLoader();  
     });
 
 }

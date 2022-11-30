@@ -1,40 +1,51 @@
 import {removeMovie} from './remove-movie'
 
-const listFilmToWatched = [];
 const STORAGE_KEY = "watched-films";
+let listFilmToWatched;
+const filmListFromStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
+filmListFromStorage ? listFilmToWatched = filmListFromStorage : listFilmToWatched = [];
+
 
 export function addFilmToWatched(data) {
+    
     const filmToAdd = data;
     const addToWatchedButton = document.querySelector('#watched');
+        
+if (listFilmToWatched.some(film=> film.id==data.id)) {
+            addToWatchedButton.textContent = 'remove from watched';  
+        }  
+
    
     addToWatchedButton.addEventListener('click', () => {
-       const filmToAdd = data; 
+        const filmToAdd = data; 
+             
+        addToWatchedButton.textContent = 'remove from watched';
 
+        if (!listFilmToWatched.some(film => film.id===data.id)) {
+            listFilmToWatched.push(filmToAdd);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched));
+            return listFilmToWatched;              
+        }   
+        
+        
+        if (listFilmToWatched.some(film => film.id === data.id)) {
+            
+            const filmToRemove = listFilmToWatched.find(el=> el.id===data.id)
 
-       if (addToWatchedButton.textContent === 'add to watched') {
-           
-           addToWatchedButton.textContent = 'remove from watched';
-                              
-        if (!listFilmToWatched.includes(filmToAdd)) {
-            listFilmToWatched.push(filmToAdd)
-        }
-                console.log(listFilmToWatched)
-           localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
-           return listFilmToWatched;
-       }
-       
-       if (addToWatchedButton.textContent === 'remove from watched') {
-           
-           removeMovie(listFilmToWatched, filmToAdd)
-           addToWatchedButton.textContent = 'add to watched';
+            removeMovie(listFilmToWatched, filmToRemove)
+               
+            addToWatchedButton.textContent = 'add to watched';
 
             localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToWatched))
-           return listFilmToWatched;
-       }      
-
-    }
-    )
+            return listFilmToWatched;
+       }   
+                     
+    })         
+    
 }
+
+    
+
 
 
 
