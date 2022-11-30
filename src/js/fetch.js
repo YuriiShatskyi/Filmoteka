@@ -18,12 +18,6 @@ export let currentURL = '';
 
 
 
-// Слухачі
-
-// refs.nextPage.addEventListener('click', onLoadMore)
-// refs.prevPage.addEventListener('click', backOnLoadMore)
-
-
 export async function fetchTrendingFilms() {
   try {    
     const response = await fetch(

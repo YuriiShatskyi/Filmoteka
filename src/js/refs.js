@@ -23,5 +23,7 @@ export const refs = {
     closeModalBtn: document.querySelector('[data-modal-close]'),
     modal: document.querySelector('[data-modal]'),
     backdrop: document.querySelector('.backdrop__team'),
+    modalTrailer: document.querySelector(".modal-movie"),
+    iframe: document.querySelector(".iframe"),
 }
 
