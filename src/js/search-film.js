@@ -8,14 +8,18 @@ import { refs } from "./refs";
 //   inputForm: document.querySelector('.header__form'),
 // };
 
+
+export let searchQuery = '';
+
 refs.inputForm.addEventListener('submit', onInput);
 
 function onInput(evt) {
   evt.preventDefault();
+  page = 1;
  
   showLoader();
 
-  const searchQuery = evt.currentTarget.elements.query.value;
+  searchQuery = evt.currentTarget.elements.query.value;
 
   if (searchQuery.trim() === '') {
     alert(
@@ -24,7 +28,7 @@ function onInput(evt) {
     return;
   }
 
-  renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
+  renderMarkup(fetchSearchingFilms(), refs.gallery);
   evt.target.reset();
 
   
