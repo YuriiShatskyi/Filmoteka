@@ -1,0 +1,121 @@
+.backdrop__team {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 15000;
+    overflow: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.backdrop__is-hidden,
+.backdrop-team__is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+
+
+
+.modal-team {
+    background-color: var(--secondary-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    opacity: 1;
+
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (max-width: 767px) {
+
+        position: absolute;
+        top: 5px;
+        z-index: 15003;
+        position: absolute;
+        margin-right: auto;
+        margin-left: auto;
+        top: 10px;
+        left: 50%;
+        transform: translate(-50%, 0%) scale(1);
+        width: 280px;
+        padding: 48px 20px 40px 20px;
+
+
+    }
+
+    @media screen and (min-width: 768px) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 704px;
+        padding: 40px 72px 40px 30px;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 1080px;
+        padding: 25px 20px 25px 20px;
+        min-height: 558px;
+    }
+}
+
+
+
+.team__img {
+
+    display: block;
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+.mount {
+    transform: scale(1);
+}
+
+.team__container {
+        display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+}
+
+.team__item {
+    position: relative;
+    height: 250px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.team__info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 1);;
+    width: 100%;
+    height: 25%;
+    opacity: 0.8;
+    padding: 8px;
+}
+
+.team__student-name {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+.team__role {
+    margin-top: 5px;
+    color: var(--secondary-color);
+    text-align: center;
+}

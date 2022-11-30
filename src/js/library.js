@@ -1,2 +1,5 @@
-// import "./modal"
-import './queued'
+
+import './queued';
+
+import "./modal";
+import './team-modal';
