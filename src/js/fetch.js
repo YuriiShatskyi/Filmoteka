@@ -16,10 +16,11 @@ import { refs } from "./refs";
   // nextPage: document.querySelector('#next-button'),
   // prevPage: document.querySelector('#prev-button'),
 
+
 };
 
-let page = 1;
 
+export let currentURL = '';
 
 export let currentURL = '';
 
@@ -49,6 +50,7 @@ export async function fetchSearchingFilms() {
       `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`
     );
     const result = await response.json();
+
     currentURL = "searchingFilmsURL";
 
     return result.results;
