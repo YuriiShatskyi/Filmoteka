@@ -25,7 +25,7 @@ function onInput(evt) {
 
 
   const searchQuery = evt.currentTarget.elements.query.value;
-
+  console.log(searchQuery);
 
   if (searchQuery.trim() === '') {
     alert(
@@ -36,8 +36,10 @@ function onInput(evt) {
   }
 
   fetchSearchingFilms(searchQuery)
+   
     .then(data => {
-      if (data.length === 0) {
+      
+      if (data === 0) {
         alert(
           'Search result not successful. Enter the correct movie name and try again'
         );
