@@ -11,6 +11,7 @@ refs.inputForm.addEventListener('submit', onInput);
 
 function onInput(evt) {
   evt.preventDefault();
+  showLoader();
 
   const searchQuery = evt.currentTarget.elements.query.value;
 
@@ -28,7 +29,7 @@ function onInput(evt) {
 
 
 
-  showLoader();
+
 }
 
 
