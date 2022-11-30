@@ -38,8 +38,8 @@ function onInput(evt) {
   fetchSearchingFilms(searchQuery)
    
     .then(data => {
-      
-      if (data === 0) {
+    
+      if (data.length === 0) {
         alert(
           'Search result not successful. Enter the correct movie name and try again'
         );
