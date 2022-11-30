@@ -11,12 +11,6 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 import { refs } from "./refs";
 
-// const refs = {
-//   gallery: document.querySelector('.gallery'),
-  // nextPage: document.querySelector('#next-button'),
-  // prevPage: document.querySelector('#prev-button'),
-// }
-
 
 export let currentURL = '';
 
@@ -29,6 +23,7 @@ export async function fetchTrendingFilms() {
     const result = await response.json();
 
     currentURL = "trendingFilmsURL";
+
     return result.results;
   } catch (error) {
     console.error(error);

@@ -22,8 +22,8 @@ function onInput(evt) {
   
  
   showLoader();
-  const searchQuery = evt.currentTarget.elements.query.value;
 
+  const searchQuery = evt.currentTarget.elements.query.value;
 
   if (searchQuery.trim() === '') {
     alert(
@@ -43,10 +43,13 @@ function onInput(evt) {
         return;
       }
 
+
       renderMarkup(fetchSearchingFilms(searchQuery), refs.gallery);
     })
     .catch(error => alert(`${error}`));
 
   hideLoader();
+
+  evt.target.reset();
 
 }
