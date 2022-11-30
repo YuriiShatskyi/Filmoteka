@@ -4,7 +4,7 @@ const STORAGE_KEY = "queue-films";
 
 let listFilmToQueue;
 const filmListFromStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
-filmListFromStorage ? listFilmToQueue = filmListFromStorage : listFilmToQueue = [];
+listFilmToQueue = filmListFromStorage || [];
 
 
 export function addFilmToQueue(data) {
@@ -26,10 +26,7 @@ if (listFilmToQueue.some(film=> film.id==data.id)) {
             listFilmToQueue.push(filmToAdd);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(listFilmToQueue));
             return listFilmToQueue;              
-        }   
-        
-        
-        if (listFilmToQueue.some(film => film.id === data.id)) {
+        }   else  {
             
             const filmToRemove = listFilmToQueue.find(el=> el.id===data.id)
 
