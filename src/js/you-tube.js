@@ -18,11 +18,11 @@ async function getTrailerByID(movieID) {
 function renderTrailer(key) {
   
   const iframe = document.createElement("iframe");
-  iframe.width = "640 px";
-  iframe.height = "480 px";
-  iframe.src = `https://www.youtube.com/embed/${key}?`
-  iframe.frameborder="0" 
-  iframe.allowfullscreen
+  // iframe.width = "780 px";
+  // iframe.height = "640 px";
+  iframe.src = `https://www.youtube.com/embed/${key}?`;
+  iframe.frameborder = "0";
+  iframe.setAttribute('allowfullscreen', "true");
   console.log(iframe);
   
   modalTrailer.append(iframe);
