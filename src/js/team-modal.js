@@ -1,6 +1,8 @@
 import { refs } from "./refs";
 
-    refs.openModalBtn.addEventListener('click', onTeamLinkCLick);
+
+refs.openModalBtn.addEventListener('click', onTeamLinkCLick);
+
 	
 
 function onTeamLinkCLick(event) {
@@ -8,7 +10,6 @@ function onTeamLinkCLick(event) {
     event.preventDefault(); 
     refs.backdrop.classList.remove('backdrop-team__is-hidden'); 
     refs.modal.classList.remove('modal-team__is-hidden');
-            console.log('убрался бєк модалки')
     refs.body.classList.add('no-scroll');
 
     document.addEventListener('keydown', onEscClose);
