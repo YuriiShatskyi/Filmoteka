@@ -193,7 +193,9 @@ function onEscClose(event) {
 function closeModal() {
     refs.backdropFilmModal.classList.add('backdrop__is-hidden');  
     refs.modalFilmInfo.classList.add('modal__is-hidden');
-    refs.body.classList.remove('no-scroll');
+  refs.body.classList.remove('no-scroll');
+  refs.iframe.classList.add('backdrop__is-hidden'); 
+  refs.iframe.removeAttribute('src');
     document.removeEventListener('click', onClickClose);
     document.removeEventListener('keydown', onEscClose);
 }
