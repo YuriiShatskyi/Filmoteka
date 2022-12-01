@@ -16,7 +16,7 @@ export let page = 1;
 const pagination = document.querySelector(".pagination ul");
 
 let callback = '';
-let totalPages = 10;
+let totalPages = 30;
 
 // виклик функції з передачею параметрів і додаванням внутрішнього елемента, який є тегом ul
 pagination.innerHTML = createPagination(totalPages, page);
@@ -31,38 +31,39 @@ export default function createPagination(totalPages, page) {
   let beforeToPage = page - 2;
   let afterToPage = page + 2;
   
-
+  
   if (page > 1) {
     li += `<li class="btn prev">Prev</li>`;
   }
   if (page > 1) {
-    li += `<li class="first number">1</li>`;
+    li += `<li class="first number ${activeLi}" >1</li>`;
   }
   if (page > 4) {
     li += `<li class="dots">...</li>`;
   }
-  // if (page > 3) {
-  //   li += `<li class="number">${beforeToPage}</li>`;
-  // }
+  if (page > 3) {
+    li += `<li class="number ${activeLi}">${beforeToPage}</li>`;
+  }
   if (page > 2) {
-    li += `<li class="number">${beforePage}</li>`;
+    li += `<li class="number ${activeLi}">${beforePage}</li>`;
   }
-  li += `<li class="number">${page}</li>`;
-  if (totalPages - 1 > page) {
-    li += `<li class="number">${afterPage}</li>`;
+  li += `<li class="number ${activeLi}">${page}</li>`;
+  if ( page < totalPages - 1) {
+    li += `<li class="number ${activeLi}">${afterPage}</li>`;
   }
-  // if (totalPages - 2 > page) {
-  //   li += `<li class="number">${afterToPage}</li>`;
-  // }
-  if (totalPages - 3 > page) {
+  if (totalPages - 2 > page) {
+    li += `<li class="number ${activeLi}">${afterToPage}</li>`;
+  }
+  if ( page < totalPages - 1) {
     li += `<li class="dots">...</li>`;
   }
-  if (totalPages > page) {
-    li += `<li class="last number">${totalPages}</li>`; 
+  if ( page < totalPages) {
+    li += `<li class="last number ${activeLi}">${totalPages}</li>`; 
     
-    li += `<li class="btn next" ${page + 1}>Next</li>`;
+    li += `<li class="btn next">Next</li>`;
   } 
- 
+
+
   createPagination.innerHTML = li; //додаю  li в  pagination
   return li; //повертаю li
 }
@@ -93,7 +94,7 @@ export function handlerPagination(evt) {
     return;
   }
   if (evt.target.textContent === "Next") {
-    page += 1;
+    page ++ ;
     getCurrentURL();
     renderMarkup(callback, refs.gallery);
     pagination.innerHTML = createPagination(totalPages, page);
