@@ -1,16 +1,8 @@
 import { refs } from "./refs";
 
-// const refs = {
-//         body: document.querySelector('body'),
-//         openModalBtn: document.querySelector('[data-modal-open]'),
-//         closeModalBtn: document.querySelector('[data-modal-close]'),
-//         modal: document.querySelector('[data-modal]'),
-        
-//         backdrop: document.querySelector('.backdrop__team'),
-//     };
+  
 
-
-    refs.openModalBtn.addEventListener('click', onTeamLinkCLick);
+refs.openModalBtn.addEventListener('click', onTeamLinkCLick);
 	
 
 function onTeamLinkCLick(event) {
@@ -18,7 +10,6 @@ function onTeamLinkCLick(event) {
     event.preventDefault(); 
     refs.backdrop.classList.remove('backdrop-team__is-hidden'); 
     refs.modal.classList.remove('modal-team__is-hidden');
-            console.log('убрался бєк модалки')
     refs.body.classList.add('no-scroll');
 
     document.addEventListener('keydown', onEscClose);

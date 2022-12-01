@@ -13,15 +13,6 @@ import { refs } from "./refs";
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-// const refs = {
-//     body: document.querySelector("body"),
-//     openModalE: document.querySelector(".filmsModal"),
-//     modalFilmInfo: document.querySelector(".modal-movie"),
-//     backdropFilmModal: document.querySelector('.backdrop'),  
-//   closeModalBtn: document.querySelector("modal__close-button"),
-    
-//   };
-
 
 refs.openModalE.addEventListener('click', onMovieCLick);
 
