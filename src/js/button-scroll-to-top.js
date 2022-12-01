@@ -1,11 +1,4 @@
-/*
-scroll-top-button
-*/
 import { refs } from "./refs";
-
-// const refs = {
-//   btnScrollTop: document.querySelector('.js-button-scroll-top'),
-// }
 
 refs.btnScrollTop.addEventListener('click', onScrollBtnClick)
 

@@ -18,7 +18,7 @@ refs.openModalE.addEventListener('click', onMovieCLick);
 
 
 function onMovieCLick(event) {
-  // showLoader(); 
+  
   refs.modalFilmInfo.innerHTML = '';
   
   event.preventDefault();  
@@ -66,9 +66,8 @@ async function getMoviesByID(movieID) {
 export function moviesByID(movieID) {
     
     getMoviesByID(movieID).then(data => {
-        console.log(data);
 
-        createModalFilmInfoMarkup(data);
+      createModalFilmInfoMarkup(data);
 
       addFilmToWatched(data);
       watchedTrailer(data)
@@ -79,8 +78,6 @@ export function moviesByID(movieID) {
     });
 
 }
-
-
 
 
 function createModalFilmInfoMarkup({
@@ -162,10 +159,6 @@ function createModalFilmInfoMarkup({
 }
 
 
-
-
-
-
 function onClickClose(event) {
   if (
     event.target.classList.contains('backdrop') ||
@@ -184,7 +177,9 @@ function onEscClose(event) {
 function closeModal() {
     refs.backdropFilmModal.classList.add('backdrop__is-hidden');  
     refs.modalFilmInfo.classList.add('modal__is-hidden');
-    refs.body.classList.remove('no-scroll');
+  refs.body.classList.remove('no-scroll');
+  refs.iframe.classList.add('backdrop__is-hidden'); 
+  refs.iframe.removeAttribute('src');
     document.removeEventListener('click', onClickClose);
     document.removeEventListener('keydown', onEscClose);
 }

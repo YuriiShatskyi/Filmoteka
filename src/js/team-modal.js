@@ -1,8 +1,8 @@
 import { refs } from "./refs";
 
-  
 
 refs.openModalBtn.addEventListener('click', onTeamLinkCLick);
+
 	
 
 function onTeamLinkCLick(event) {
@@ -15,9 +15,6 @@ function onTeamLinkCLick(event) {
     document.addEventListener('keydown', onEscClose);
     document.addEventListener('click', onClickClose);
 }
-
-
-
 
 
 function onClickClose(event) {

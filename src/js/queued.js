@@ -1,12 +1,5 @@
 import { refs } from "./refs";
 
-// const refs = {
-//     watchedBtn: document.querySelector(".wached-btn"),
-//     queueBtn: document.querySelector(".queue-btn"),
-//     gallery: document.querySelector('.gallery'),
-//     openModalE: document.querySelector(".filmsModal"),
-// };
-  
 refs.watchedBtn.addEventListener('click', renderWatched);
 refs.queueBtn.addEventListener('click', renderQueued);
 renderWatched();
@@ -21,7 +14,6 @@ function renderQueued() {
         return
     }
     let uniqueObjArray = [...new Map(queuedMovies.map((item) => [item["id"], item])).values()];
-  console.log('queuedMovies', uniqueObjArray)
     
     const newMarkup = uniqueObjArray.map(movie => {
    
@@ -56,10 +48,9 @@ function renderWatched() {
         refs.gallery.innerHTML = placeholder;
         return
     }
-    let uniqueObjArray = [...new Map(watchedMovies.map((item) => [item["id"], item])).values()];
-  console.log('queuedMovies', uniqueObjArray)
+    let uniqueObjArray = [...new Map(watchedMovies.map((item) => [item["id"], item])).values()];    
     
-    const newMarkup = uniqueObjArray.map(movie => {
+  const newMarkup = uniqueObjArray.map(movie => {
    
         return `
  <a id=${movie.id} class="gallery__poster-card" href="">

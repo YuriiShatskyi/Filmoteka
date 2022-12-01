@@ -7,18 +7,13 @@ import { refs } from "./refs";
 const firebaseConfig = {
   apiKey: "AIzaSyAtpKsHrzjzgSonJI46WHF-o0DqXya7MXc",
   authDomain: "filmoteka-33c7f.firebaseapp.com",
+  databaseURL: "https://filmoteka-33c7f-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "filmoteka-33c7f",
   storageBucket: "filmoteka-33c7f.appspot.com",
   messagingSenderId: "353866619505",
   appId: "1:353866619505:web:2ad78541afaacda309d9d0"
 };
-// const refs = {
-//     openAuthModalBtn: document.querySelector("[data-auth-modal-open]"),
-//     closeAuthModal: document.querySelector("[data-auth-modal-close]"),
-//     modalAuth: document.querySelector("[data-auth-modal]"),
-//     body: document.querySelector("body"),
-//   };
-  console.log(refs.openAuthModalBtn);
+
   renderAuthModal();
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
@@ -36,35 +31,30 @@ function openModalAuth() {
     refs.body.classList.toggle("no-scroll");
 }
 
-// google sign in
-
 googleBtn.addEventListener("click", (e) =>{
   signInWithPopup(auth, provider)
   .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
+    
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
-    // The signed-in user info.
+    
     const user = result.user;
-    console.log(user);
+    closeModal();
+    renderAuthModal();
     isSignIn = true;
-    // ...
+    
   }).catch((error) => {
-    // Handle Errors here.
+    
     const errorCode = error.code;
     const errorMessage = error.message;
-    // The email of the user's account used.
+    
     const email = error.customData.email;
-    // The AuthCredential type that was used.
+    
     const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
+    
   });
 });
 
-
-
-
-//Sign Up
 signUpBtn.addEventListener("click", (e) =>{
   var email = document.getElementById('auth__email').value;
   var password = document.getElementById('auth__password').value;
@@ -72,7 +62,7 @@ signUpBtn.addEventListener("click", (e) =>{
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-     // Signed in 
+     
       const user = userCredential.user;
 
       set(ref(database, 'users/' + user.uid),{
@@ -81,21 +71,20 @@ signUpBtn.addEventListener("click", (e) =>{
       })
 
       alert('user created!');
-      // ...
+      closeModal();
+      renderAuthModal();
+      
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
       alert(errorMessage);
-    // ..
+    
 
 
 })
 });
-
-
-// Sign in with email and password
 
 
 signInBtn.addEventListener("click", (e) =>{
@@ -105,7 +94,7 @@ signInBtn.addEventListener("click", (e) =>{
 
   signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
+        
         const user = userCredential.user;
 
         const dt = new Date();
@@ -116,7 +105,8 @@ signInBtn.addEventListener("click", (e) =>{
         alert('User loged in!');
         isSignIn = true;
         closeModal();
-        // ...
+        renderAuthModal();
+
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -144,6 +134,7 @@ document.addEventListener('click', onClickCloseAuth);
 
 function closeModal() {
   refs.modalAuth.classList.add("visually-hidden");
+  renderAuthModal();
 }
 function renderAuthModal(){
   refs.modalAuth.innerHTML = `
@@ -155,9 +146,9 @@ function renderAuthModal(){
   </div>
   <p class="auth__paragraph">Or login to the app using your e-mail and password:</p>
   <form class="auth__form">
-      <label class="auth__label">Your username <input type="text" class="auth__input auth__input-username" id="auth__username"></label>
-      <label class="auth__label">Your email <input type="email" class="auth__input auth__input-email" id="auth__email"></label>
-      <label class="auth__label">Your password <input type="password" class="auth__input auth__input-password" id="auth__password"></label>
+  <label class="auth__label"><p class="auth__input-text">Your username</p> <input type="text" class="auth__input auth__input-username" id="auth__username"></label>
+  <label class="auth__label"><p class="auth__input-text">Your email</p> <input type="email" class="auth__input auth__input-email" id="auth__email"></label>
+  <label class="auth__label"><p class="auth__input-text">Your password</p> <input type="password" class="auth__input auth__input-password" id="auth__password"></label>
       </form>
       <div class="auth__container">
           <button class="auth__btn-sign-in auth__btn" id="sign-in" >Sign In</button>
