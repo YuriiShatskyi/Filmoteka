@@ -22,6 +22,8 @@ const auth = getAuth();
 const googleBtn = document.querySelector('#google-sign-in');
 const signInBtn = document.querySelector('.auth__btn-sign-in');
 const signUpBtn = document.querySelector('.auth__btn-sign-up');
+const signInBox = document.querySelector('.header__auth-box');
+const myAccount = document.querySelector('.auth__my-account');
 var isSignIn = false;
 
 
@@ -41,6 +43,7 @@ googleBtn.addEventListener("click", (e) =>{
     const user = result.user;
     closeModal();
     renderAuthModal();
+    renderMyAccount();
     isSignIn = true;
     
   }).catch((error) => {
@@ -48,7 +51,6 @@ googleBtn.addEventListener("click", (e) =>{
     const errorCode = error.code;
     const errorMessage = error.message;
     
-    const email = error.customData.email;
     
     const credential = GoogleAuthProvider.credentialFromError(error);
     
@@ -134,7 +136,9 @@ document.addEventListener('click', onClickCloseAuth);
 
 function closeModal() {
   refs.modalAuth.classList.add("visually-hidden");
+  refs.body.classList.toggle("no-scroll");
   renderAuthModal();
+  renderMyAccount();
 }
 function renderAuthModal(){
   refs.modalAuth.innerHTML = `
@@ -157,4 +161,18 @@ function renderAuthModal(){
   
   </div>
 </div>`
+}
+function renderMyAccount(){
+
+  // if (isSignIn === false){
+  //   signInBox.innerHTML = `
+  //   <button class="header__auth-btn" data-auth-modal-open>My Account</button>
+  // `
+  // }
+  // if(isSignIn === true){
+  //   signInBox.innerHTML = `
+  //   <button class="header__auth-btn" data-auth-modal-open>Log Out</button>
+  // `
+  // }
+  
 }
