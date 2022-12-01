@@ -18,7 +18,7 @@ export let currentURL = '';
 export async function fetchTrendingFilms() {
   try {
     const response = await fetch(
-      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
+      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
     );
     const result = await response.json();
 
