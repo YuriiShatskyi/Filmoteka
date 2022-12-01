@@ -6,9 +6,6 @@ export function renderMarkup(callback, destination) {
  
     callback.then(movies => {
   
-      
-      // addPage()
-      
       const newMarkup = movies
         .map(movie => {
   let genres = movie.genre_ids.map(genre_id => { return (API_GENRES.find(genre => genre.id === genre_id)).name}).join(', ');

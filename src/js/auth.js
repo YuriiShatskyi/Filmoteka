@@ -13,12 +13,7 @@ const firebaseConfig = {
   messagingSenderId: "353866619505",
   appId: "1:353866619505:web:2ad78541afaacda309d9d0"
 };
-// const refs = {
-//     openAuthModalBtn: document.querySelector("[data-auth-modal-open]"),
-//     closeAuthModal: document.querySelector("[data-auth-modal-close]"),
-//     modalAuth: document.querySelector("[data-auth-modal]"),
-//     body: document.querySelector("body"),
-//   };
+
   renderAuthModal();
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
@@ -36,36 +31,30 @@ function openModalAuth() {
     refs.body.classList.toggle("no-scroll");
 }
 
-// google sign in
-
 googleBtn.addEventListener("click", (e) =>{
   signInWithPopup(auth, provider)
   .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
+    
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
-    // The signed-in user info.
+    
     const user = result.user;
     closeModal();
     renderAuthModal();
     isSignIn = true;
-    // ...
+    
   }).catch((error) => {
-    // Handle Errors here.
+    
     const errorCode = error.code;
     const errorMessage = error.message;
-    // The email of the user's account used.
+    
     const email = error.customData.email;
-    // The AuthCredential type that was used.
+    
     const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
+    
   });
 });
 
-
-
-
-//Sign Up
 signUpBtn.addEventListener("click", (e) =>{
   var email = document.getElementById('auth__email').value;
   var password = document.getElementById('auth__password').value;
@@ -73,7 +62,7 @@ signUpBtn.addEventListener("click", (e) =>{
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-     // Signed in 
+     
       const user = userCredential.user;
 
       set(ref(database, 'users/' + user.uid),{
@@ -84,21 +73,18 @@ signUpBtn.addEventListener("click", (e) =>{
       alert('user created!');
       closeModal();
       renderAuthModal();
-      // ...
+      
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
       alert(errorMessage);
-    // ..
+    
 
 
 })
 });
-
-
-// Sign in with email and password
 
 
 signInBtn.addEventListener("click", (e) =>{
@@ -108,7 +94,7 @@ signInBtn.addEventListener("click", (e) =>{
 
   signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
+        
         const user = userCredential.user;
 
         const dt = new Date();
@@ -120,7 +106,7 @@ signInBtn.addEventListener("click", (e) =>{
         isSignIn = true;
         closeModal();
         renderAuthModal();
-        // ...
+
       })
       .catch((error) => {
         const errorCode = error.code;

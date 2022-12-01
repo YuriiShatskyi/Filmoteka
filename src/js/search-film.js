@@ -4,25 +4,14 @@ import { showLoader } from './loader';
 import { hideLoader } from './loader';
 import { refs } from "./refs";
 
-
-// const refs = {
-//   gallery: document.querySelector('.gallery'),
-//   inputForm: document.querySelector('.header__form'),
-// };
-
-
 export let searchQuery = '';
 
 refs.inputForm.addEventListener('submit', onInput);
 
-// search function by "input"
-
 function onInput(evt) {
   evt.preventDefault();
-  
- 
+   
   showLoader();
-
 
   const searchQuery = evt.currentTarget.elements.query.value;
   console.log(searchQuery);
