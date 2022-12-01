@@ -1,15 +1,5 @@
 import { refs } from "./refs";
 
-// const refs = {
-//         body: document.querySelector('body'),
-//         openModalBtn: document.querySelector('[data-modal-open]'),
-//         closeModalBtn: document.querySelector('[data-modal-close]'),
-//         modal: document.querySelector('[data-modal]'),
-        
-//         backdrop: document.querySelector('.backdrop__team'),
-//     };
-
-
     refs.openModalBtn.addEventListener('click', onTeamLinkCLick);
 	
 
@@ -24,9 +14,6 @@ function onTeamLinkCLick(event) {
     document.addEventListener('keydown', onEscClose);
     document.addEventListener('click', onClickClose);
 }
-
-
-
 
 
 function onClickClose(event) {

@@ -13,21 +13,12 @@ import { refs } from "./refs";
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-// const refs = {
-//     body: document.querySelector("body"),
-//     openModalE: document.querySelector(".filmsModal"),
-//     modalFilmInfo: document.querySelector(".modal-movie"),
-//     backdropFilmModal: document.querySelector('.backdrop'),  
-//   closeModalBtn: document.querySelector("modal__close-button"),
-    
-//   };
-
 
 refs.openModalE.addEventListener('click', onMovieCLick);
 
 
 function onMovieCLick(event) {
-  // showLoader(); 
+  
   refs.modalFilmInfo.innerHTML = '';
   
   event.preventDefault();  
@@ -75,9 +66,8 @@ async function getMoviesByID(movieID) {
 export function moviesByID(movieID) {
     
     getMoviesByID(movieID).then(data => {
-        console.log(data);
 
-        createModalFilmInfoMarkup(data);
+      createModalFilmInfoMarkup(data);
 
       addFilmToWatched(data);
       watchedTrailer(data)
@@ -88,8 +78,6 @@ export function moviesByID(movieID) {
     });
 
 }
-
-
 
 
 function createModalFilmInfoMarkup({
@@ -169,10 +157,6 @@ function createModalFilmInfoMarkup({
         </div>
     </div>`;
 }
-
-
-
-
 
 
 function onClickClose(event) {
