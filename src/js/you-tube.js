@@ -14,16 +14,15 @@ async function getTrailerByID(movieID) {
  
         renderTrailer(key);
   } catch (error) {
-       console.log('Sometning go wrong in fetch');
+       alert('Your movie dont have any trailer');
   }
 }
 
 function renderTrailer(key) {
-
-  refs.iframe.classList.remove('backdrop__is-hidden')
+  
+    refs.iframe.classList.remove('backdrop__is-hidden')
   refs.iframe.setAttribute('src', `https://www.youtube.com/embed/${key}?`);
 
- 
 }
 
 export function watchedTrailer(data) {
@@ -31,7 +30,6 @@ export function watchedTrailer(data) {
     document.querySelector('#trailer').addEventListener('click', () => {
     
        const movieID = data.id
-        console.log(movieID);
     
       getTrailerByID(movieID);
 

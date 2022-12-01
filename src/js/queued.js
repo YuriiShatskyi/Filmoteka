@@ -1,12 +1,5 @@
 import { refs } from "./refs";
 
-// const refs = {
-//     watchedBtn: document.querySelector(".wached-btn"),
-//     queueBtn: document.querySelector(".queue-btn"),
-//     gallery: document.querySelector('.gallery'),
-//     openModalE: document.querySelector(".filmsModal"),
-// };
-  
 refs.watchedBtn.addEventListener('click', renderWatched);
 refs.queueBtn.addEventListener('click', renderQueued);
 renderWatched();
@@ -21,7 +14,6 @@ function renderQueued() {
         return
     }
     let uniqueObjArray = [...new Map(queuedMovies.map((item) => [item["id"], item])).values()];
-  console.log('queuedMovies', uniqueObjArray)
     
     const newMarkup = uniqueObjArray.map(movie => {
    
@@ -34,9 +26,7 @@ function renderQueued() {
     <p class="info-item title">
       ${movie.original_title}
     </p>
-    <p class="info-item">
-    ${movie.genres[0].name}, ${movie.genres[1].name}, ${movie.genres[2].name} | ${movie.release_date.substring(0, 4)}
-    </p>
+
   
   </div>
   </a>
@@ -56,10 +46,9 @@ function renderWatched() {
         refs.gallery.innerHTML = placeholder;
         return
     }
-    let uniqueObjArray = [...new Map(watchedMovies.map((item) => [item["id"], item])).values()];
-  console.log('queuedMovies', uniqueObjArray)
+    let uniqueObjArray = [...new Map(watchedMovies.map((item) => [item["id"], item])).values()];    
     
-    const newMarkup = uniqueObjArray.map(movie => {
+  const newMarkup = uniqueObjArray.map(movie => {
    
         return `
  <a id=${movie.id} class="gallery__poster-card" href="">
@@ -69,9 +58,6 @@ function renderWatched() {
   <div class="poster-card__info">
     <p class="info-item title">
       ${movie.original_title}
-    </p>
-    <p class="info-item">
-    ${movie.genres[0].name}, ${movie.genres[1].name}, ${movie.genres[2].name} | ${movie.release_date.substring(0, 4)}
     </p>
   
   </div>

@@ -13,10 +13,9 @@
             @media screen and (min-width: $mobile) {
                 flex-direction: column;
             }    
-
-                          @media screen and (min-width: $tablet) {
-                              flex-direction: row;
-                          }                       
+            @media screen and (min-width: $tablet) {
+                flex-direction: row;
+            }                       
         }
 
         &__text {
@@ -28,7 +27,7 @@
             text-align: center;
             font-weight: 400;
 
-            @media screen and (max-width: 767px) {
+            @media screen and (max-width: 768px) {
                 font-size: 14px;
                 line-height: 1.14;
             };
@@ -45,9 +44,13 @@
         
         &__icon-heart {
             margin-right: 10px;
-            margin-left: 10px;
-
+            
             animation: heart 0.4s cubic-bezier(0.19, 0.57, 0.3, 0.98) infinite alternate;
+
+            @media screen and (max-width: 768px){
+                width:14px;
+                height:14px;
+            }
         }
 
         &__button {
@@ -59,15 +62,15 @@
             text-align: center;
             font-weight: 400;
             cursor: pointer;
-            @media screen and (max-width: 767px) {
+            @media screen and (max-width: 768px) {
                     font-size: 14px;
                     line-height: 1.14;
                 }   
                 
-                @media screen and (min-width: $tablet) {
-                    font-size: 16px;
-                    line-height: 1.19;
-                }
+            @media screen and (min-width: $tablet) {
+                font-size: 16px;
+                line-height: 1.19;
+            }
             
         }
 
