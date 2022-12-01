@@ -35,7 +35,7 @@ export async function fetchTrendingFilms() {
 
 }
 
-export async function fetchSearchingFilms() {
+export async function fetchSearchingFilms(searchQuery) {
   try {
     const response = await fetch(
       `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`

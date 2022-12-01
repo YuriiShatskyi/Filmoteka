@@ -1,14 +1,6 @@
-
-import { API_GENRES } from "./genres-list";
 import { refs } from "./refs";
-
 import { currentURL, fetchSearchingFilms, fetchTrendingFilms } from "./fetch";
 import { renderMarkup } from "./render-card-markup";
-
-
-
-
-
 
 export let page = 1;
 
@@ -19,8 +11,7 @@ let totalPages = 30;
 
 // виклик функції з передачею параметрів і додаванням внутрішнього елемента, який є тегом ul
 pagination.innerHTML = createPagination(totalPages, page);
-
-    
+   
 export default function createPagination(totalPages, page) {
     
   let li = '';
@@ -35,34 +26,36 @@ export default function createPagination(totalPages, page) {
     li += `<li class="btn prev">Prev</li>`;
   }
   if (page > 1) {
-    li += `<li class="first number ${activeLi}" >1</li>`;
+    li += `<li class="first number" >1</li>`;
   }
   if (page > 4) {
     li += `<li class="dots">...</li>`;
   }
   if (page > 3) {
-    li += `<li class="number ${activeLi}">${beforeToPage}</li>`;
+    li += `<li class="number">${beforeToPage}</li>`;
   }
   if (page > 2) {
-    li += `<li class="number ${activeLi}">${beforePage}</li>`;
+    li += `<li class="number">${beforePage}</li>`;
   }
-  li += `<li class="number ${activeLi}">${page}</li>`;
+  if(page === page){ //якщо сторінка дорівнює довжині, тоді призначте
+      activeLi = "active";
+  }else{ 
+      activeLi = "";
+  }
+    li += `<li class="number ${activeLi}">${page}</li>`;
   if ( page < totalPages - 1) {
-    li += `<li class="number ${activeLi}">${afterPage}</li>`;
+    li += `<li class="number">${afterPage}</li>`;
   }
   if (totalPages - 2 > page) {
-    li += `<li class="number ${activeLi}">${afterToPage}</li>`;
+    li += `<li class="number">${afterToPage}</li>`;
   }
   if ( page < totalPages - 1) {
     li += `<li class="dots">...</li>`;
   }
   if ( page < totalPages) {
-    li += `<li class="last number ${activeLi}">${totalPages}</li>`; 
-    
+    li += `<li class="last number">${totalPages}</li>`; 
     li += `<li class="btn next">Next</li>`;
   } 
-
-
   pagination.innerHTML = li; //додаю  li в  pagination
   return li; //повертаю li
 }
@@ -88,8 +81,6 @@ export function handlerPagination(evt) {
     getCurrentURL();
     renderMarkup(callback, refs.gallery);
     pagination.innerHTML = createPagination(totalPages, page);
-    console.log(page);
-   
     return;
   }
   if (evt.target.textContent === "Next") {
@@ -97,7 +88,6 @@ export function handlerPagination(evt) {
     getCurrentURL();
     renderMarkup(callback, refs.gallery);
     pagination.innerHTML = createPagination(totalPages, page);
-    console.log(page);
     return;
   }
   if (evt.target.textContent === "...") {
@@ -105,8 +95,8 @@ export function handlerPagination(evt) {
   }
   page = evt.target.textContent;
   getCurrentURL();
-    renderMarkup(callback, refs.gallery);
-  console.log(page);
+  renderMarkup(callback, refs.gallery);
+  
    window.scrollTo({
     top: 0,
   });
