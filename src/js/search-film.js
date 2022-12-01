@@ -14,7 +14,6 @@ function onInput(evt) {
   showLoader();
 
   const searchQuery = evt.currentTarget.elements.query.value;
-  console.log(searchQuery);
 
   if (searchQuery.trim() === '') {
     alert(
