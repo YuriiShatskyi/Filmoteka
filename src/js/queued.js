@@ -26,9 +26,7 @@ function renderQueued() {
     <p class="info-item title">
       ${movie.original_title}
     </p>
-    <p class="info-item">
-    ${movie.genres[0].name}, ${movie.genres[1].name}, ${movie.genres[2].name} | ${movie.release_date.substring(0, 4)}
-    </p>
+
   
   </div>
   </a>
@@ -60,9 +58,6 @@ function renderWatched() {
   <div class="poster-card__info">
     <p class="info-item title">
       ${movie.original_title}
-    </p>
-    <p class="info-item">
-    ${movie.genres[0].name}, ${movie.genres[1].name}, ${movie.genres[2].name} | ${movie.release_date.substring(0, 4)}
     </p>
   
   </div>
