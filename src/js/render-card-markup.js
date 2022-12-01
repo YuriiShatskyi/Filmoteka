@@ -20,7 +20,7 @@ export function renderMarkup(callback, destination) {
         ${movie.original_title}
       </p>
       <p class="info-item">
-      ${genres} | ${movie.release_date.substring(0, 4)}      <span class="vote-container visually-hidden">${movie.vote_average.toFixed(1)}</span> 
+      // ${genres} | ${movie.release_date.substring(0, 4)}      <span class="vote-container visually-hidden">${movie.vote_average.toFixed(1)}</span> 
       </p>
 
     </div>

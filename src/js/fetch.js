@@ -18,7 +18,7 @@ export let currentURL = '';
 export async function fetchTrendingFilms() {
   try {
     const response = await fetch(
-      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
+      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
     );
     const result = await response.json();
 
@@ -35,7 +35,7 @@ export async function fetchTrendingFilms() {
 
 }
 
-export async function fetchSearchingFilms(searchQuery) {
+export async function fetchSearchingFilms() {
   try {
     const response = await fetch(
       `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${page}&include_adult=false`

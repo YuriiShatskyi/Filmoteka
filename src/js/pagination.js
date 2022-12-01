@@ -4,10 +4,9 @@ import { refs } from "./refs";
 
 import { currentURL, fetchSearchingFilms, fetchTrendingFilms } from "./fetch";
 import { renderMarkup } from "./render-card-markup";
-import { searchQuery } from "./search-film";
 
-const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
-const BASE_URL = 'https://api.themoviedb.org/3';
+
+
 
 
 
@@ -64,7 +63,7 @@ export default function createPagination(totalPages, page) {
   } 
 
 
-  createPagination.innerHTML = li; //додаю  li в  pagination
+  pagination.innerHTML = li; //додаю  li в  pagination
   return li; //повертаю li
 }
 pagination.addEventListener('click', handlerPagination);
