@@ -15,7 +15,22 @@ function renderQueued() {
     }
     let uniqueObjArray = [...new Map(queuedMovies.map((item) => [item["id"], item])).values()];
     
-    const newMarkup = uniqueObjArray.map(movie => {
+  const newMarkup = uniqueObjArray.map(movie => {
+    const totalGenres = movie.genres;
+
+    if (totalGenres.length > 3) {
+        const other = 'Other';
+        totalGenres[2].name = other;
+        totalGenres.length = 3;
+    };
+    
+const getGenres = totalGenres =>
+  totalGenres.reduce((allGenres, genre) => {
+    allGenres.push(genre.name);
+
+    return allGenres;
+  }, []);
+ 
    
         return `
  <a id=${movie.id} class="gallery__poster-card" href="">
@@ -27,7 +42,7 @@ function renderQueued() {
       ${movie.original_title}
     </p>
     <p class="info-item">
-    ${movie.genres[0].name}, ${movie.genres[1].name}, ${movie.genres[2].name} | ${movie.release_date.substring(0, 4)}
+    // ${getGenres(totalGenres).join(', ')} | ${movie.release_date.substring(0, 4)}
     </p>
   
   </div>
@@ -51,7 +66,22 @@ function renderWatched() {
     let uniqueObjArray = [...new Map(watchedMovies.map((item) => [item["id"], item])).values()];    
     
   const newMarkup = uniqueObjArray.map(movie => {
+    const totalGenres = movie.genres;
+    
+
+    if (totalGenres.length > 3) {
+        const other = 'Other';
+        totalGenres[2].name = other;
+        totalGenres.length = 3;
+    };
+    
+    
+const getGenres = totalGenres =>
+  totalGenres.reduce((allGenres, genre) => {
+    allGenres.push(genre.name);
    
+    return allGenres;
+  }, []);
         return `
  <a id=${movie.id} class="gallery__poster-card" href="">
   <img class="poster-card__image" src="https://image.tmdb.org/t/p/w780${
@@ -62,7 +92,7 @@ function renderWatched() {
       ${movie.original_title}
     </p>
     <p class="info-item">
-    ${movie.genres[0].name}, ${movie.genres[1].name}, ${movie.genres[2].name} | ${movie.release_date.substring(0, 4)}
+    // ${getGenres(totalGenres).join(', ')} | ${movie.release_date.substring(0, 4)}
     </p>
   
   </div>
