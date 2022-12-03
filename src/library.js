@@ -1,8 +1,6 @@
-
-import './js/pagination';
+import './js/refs';
 import './js/team-modal';
-import './js/queued';
-
 import "./js/modal";
 import './js/auth';
-
+import './js/button-scroll-to-top';
+import './js/queued';
