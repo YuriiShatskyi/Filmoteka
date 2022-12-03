@@ -2,17 +2,12 @@ import { refs } from "./refs";
 
 refs.watchedBtn.addEventListener('click', renderWatched);
 refs.queueBtn.addEventListener('click', renderQueued);
-
-  setTimeout(() => {
-    renderWatched();
-  }, 150);
-
-
+renderWatched();
 function renderQueued() {
     refs.watchedBtn.classList.remove("active");
     refs.queueBtn.classList.add("active");
     const queuedMovies = JSON.parse(localStorage.getItem('queue-films'));
-    if (queuedMovies.length === 0) {
+    if (queuedMovies === null) {
         
         const placeholder = `<p>Your list is empty(</p>`
         refs.gallery.innerHTML = placeholder;
@@ -62,7 +57,7 @@ function renderWatched() {
     refs.queueBtn.classList.remove("active");
     refs.watchedBtn.classList.add("active");
     const watchedMovies = JSON.parse(localStorage.getItem('watched-films'))
-    if (watchedMovies.length === 0) {
+    if (watchedMovies === null) {
         
         const placeholder = `<p>Your list is empty(</p>`
         refs.gallery.innerHTML = placeholder;
