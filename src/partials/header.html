@@ -1,4 +1,6 @@
 <header class="header container">
+
+  
   <nav class="header__nav">
     <a class="header__logo header--link" href="./index.html">
       <svg class="header__logo-icon">
@@ -20,6 +22,24 @@
       <button class="header__auth-btn auth__my-account" data-auth-modal-open>My Account</button>
     </div>
   </nav>
+
+  <div class="theme-switch container">
+    <svg class="theme-switch__icon"  aria-label="Sun">
+      <use href="/src/images/symbol-defs.svg#icon-sun"></use>
+    </svg>
+  
+    <div class="theme-switch__control">
+      <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+        aria-label="Перемикач" />
+      <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"> </label>
+      <div aria-hidden="true" class="theme-switch__marker"></div>
+    </div>
+  
+    <svg class="theme-switch__icon" aria-label="Moon">
+      <use href="/src/images/symbol-defs.svg#icon-moon"></use>
+    </svg>
+  </div>
+
   <form class="header__form">
     <input
       class="header__input"
@@ -34,4 +54,6 @@
       </svg>
     </button>
   </form>
+  
+  
 </header>

@@ -19,5 +19,7 @@ export const refs = {
     backdrop: document.querySelector('.backdrop__team'),
     modalTrailer: document.querySelector(".modal-movie"),
     iframe: document.querySelector(".iframe"),
+
+    checkbox: document.querySelector('.theme-switch__toggle'),
 }
 
