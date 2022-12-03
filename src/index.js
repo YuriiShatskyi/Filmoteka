@@ -9,7 +9,7 @@ import './js/pagination';
 import './js/render-card-markup';
 import './js/search-film';
 import './js/you-tube';
-
+import './js/darktheme';
 
 
 
