@@ -17,7 +17,7 @@ let totalPages = 30;
   pagination.innerHTML = createPagination(totalPages, page);
   
 export default function createPagination(totalPages, page) {
-  if (windows === '/library.html') { 
+  if (windows === '/filmoteka/library.html') { 
      paginationEl.style.display = "none";
     }
   let li = '';
@@ -68,7 +68,7 @@ export default function createPagination(totalPages, page) {
 pagination.addEventListener('click', handlerPagination);
 
 function getCurrentURL() { 
-  if (windows === '/library.html') { 
+  if (windows === '/filmoteka/library.html') { 
     // pagination.classList.add("display");
     paginationEl.style.display = "none";
     }
@@ -83,10 +83,11 @@ if (currentURL == "searchingFilmsURL" ){
 
 }
 export function handlerPagination(evt) {
-  if (windows === '/library.html') { 
+  if (windows === '/filmoteka/library.html') { 
     
       paginationEl.style.display = "none";
-    }
+  }
+  
   if (evt.target.nodeName !== 'LI') {
     return
   }
