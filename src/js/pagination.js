@@ -4,16 +4,21 @@ import { renderMarkup } from "./render-card-markup";
 
 export let page = 1;
 
+const windows = window.location.pathname;
 const pagination = document.querySelector(".pagination ul");
 
 let callback = '';
 let totalPages = 30;
 
 // виклик функції з передачею параметрів і додаванням внутрішнього елемента, який є тегом ul
-pagination.innerHTML = createPagination(totalPages, page);
-   
+
+
+  pagination.innerHTML = createPagination(totalPages, page);
+  
 export default function createPagination(totalPages, page) {
-    
+  if (windows === '/library.html') { 
+    pagination.classList.add = 'display';
+    }
   let li = '';
   let activeLi;
   let beforePage = page - 1;
@@ -62,6 +67,9 @@ export default function createPagination(totalPages, page) {
 pagination.addEventListener('click', handlerPagination);
 
 function getCurrentURL() { 
+  if (windows === '/library.html') { 
+       pagination.classList.add = 'display';
+    }
   if (currentURL == "trendingFilmsURL" ){
   callback = fetchTrendingFilms();
   return callback
@@ -73,6 +81,10 @@ if (currentURL == "searchingFilmsURL" ){
 
 }
 export function handlerPagination(evt) {
+  if (windows === '/library.html') { 
+    
+       pagination.classList.add = 'display';
+    }
   if (evt.target.nodeName !== 'LI') {
     return
   }
@@ -102,6 +114,7 @@ export function handlerPagination(evt) {
   });
 }
    
+
 
 
 
