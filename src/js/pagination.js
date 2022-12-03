@@ -5,6 +5,7 @@ import { renderMarkup } from "./render-card-markup";
 export let page = 1;
 
 const windows = window.location.pathname;
+const paginationEl = document.querySelector('.pagination')
 const pagination = document.querySelector(".pagination ul");
 
 let callback = '';
@@ -17,7 +18,7 @@ let totalPages = 30;
   
 export default function createPagination(totalPages, page) {
   if (windows === '/library.html') { 
-    pagination.classList.add = 'display';
+     paginationEl.style.display = "none";
     }
   let li = '';
   let activeLi;
@@ -68,7 +69,8 @@ pagination.addEventListener('click', handlerPagination);
 
 function getCurrentURL() { 
   if (windows === '/library.html') { 
-       pagination.classList.add = 'display';
+    // pagination.classList.add("display");
+    paginationEl.style.display = "none";
     }
   if (currentURL == "trendingFilmsURL" ){
   callback = fetchTrendingFilms();
@@ -83,7 +85,7 @@ if (currentURL == "searchingFilmsURL" ){
 export function handlerPagination(evt) {
   if (windows === '/library.html') { 
     
-       pagination.classList.add = 'display';
+      paginationEl.style.display = "none";
     }
   if (evt.target.nodeName !== 'LI') {
     return
