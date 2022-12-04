@@ -11,9 +11,6 @@ const pagination = document.querySelector(".pagination ul");
 let callback = '';
 let totalPages = 1000;
 
-// виклик функції з передачею параметрів і додаванням внутрішнього елемента, який є тегом ul
-
-
   pagination.innerHTML = createPagination(totalPages, page);
   
 export default function createPagination(totalPages, page) {
@@ -42,7 +39,7 @@ export default function createPagination(totalPages, page) {
   if (page > 2) {
     li += `<li class="number">${beforePage}</li>`;
   }
-  if(page === page){ //якщо сторінка дорівнює довжині, тоді призначте
+  if(page === page){ 
       activeLi = "active";
   }else{ 
       activeLi = "";
@@ -61,14 +58,14 @@ export default function createPagination(totalPages, page) {
     li += `<li class="last number">${totalPages}</li>`; 
     li += `<li class="btn next">Next</li>`;
   } 
-  pagination.innerHTML = li; //додаю  li в  pagination
-  return li; //повертаю li
+  pagination.innerHTML = li; 
+  return li; 
 }
 pagination.addEventListener('click', handlerPagination);
 
 function getCurrentURL() { 
   if (windows === '/filmoteka/library.html') { 
-    // pagination.classList.add("display");
+    
     paginationEl.style.display = "none";
     }
   if (currentURL == "trendingFilmsURL" ){

@@ -14,11 +14,6 @@ refs.inputForm.addEventListener('submit', onInput);
 
 function onInput(evt) {
   evt.preventDefault();
-  //  showLoader();
-
-  // page = 1;
-  
-
   searchQuery = evt.currentTarget.elements.query.value.trim();
 
   if (!searchQuery) {
@@ -43,9 +38,7 @@ function onInput(evt) {
       renderMarkup(fetchSearchingFilms(), refs.gallery);
     })
     .catch(error => alert(`${error}`));
-
-  // hideLoader();
-
+  
   evt.target.reset();
 
 }
