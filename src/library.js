@@ -4,3 +4,4 @@ import "./js/modal";
 import './js/auth';
 import './js/button-scroll-to-top';
 import './js/queued';
+import './js/darktheme';

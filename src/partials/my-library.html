@@ -16,6 +16,21 @@
     </ul>
     <button class="header__auth-btn" data-auth-modal-open>My Account</button>
   </nav>
+  <div class="theme-switch container">
+    <svg class="theme-switch__icon" aria-label="Sun">
+      <use href="/src/images/symbol-defs.svg#icon-sun"></use>
+    </svg>
+  
+    <div class="theme-switch__control">
+      <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle" aria-label="Перемикач" />
+      <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle"> </label>
+      <div aria-hidden="true" class="theme-switch__marker"></div>
+    </div>
+  
+    <svg class="theme-switch__icon" aria-label="Moon">
+      <use href="/src/images/symbol-defs.svg#icon-moon"></use>
+    </svg>
+  </div>
   <div class="btn-container">
     <button class="wached-btn active">wached</button>
     <button class="queue-btn">queue</button>
