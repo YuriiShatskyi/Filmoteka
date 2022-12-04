@@ -19,11 +19,11 @@ function onInput(evt) {
   // page = 1;
   
 
-  searchQuery = evt.currentTarget.elements.query.value;
+  searchQuery = evt.currentTarget.elements.query.value.trim();
 
-  if (searchQuery.trim() === '') {
+  if (!searchQuery) {
     alert(
-      'Search result not successful. Enter the correct movie name and try again'
+      'You have not entered a movie title'
     );
     hideLoader();
     return;
