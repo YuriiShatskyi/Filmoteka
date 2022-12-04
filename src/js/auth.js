@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { getDatabase, set, ref, update } from "firebase/database";
 import { refs } from "./refs";
 
@@ -16,65 +16,33 @@ const firebaseConfig = {
 
   renderAuthModal();
 const app = initializeApp(firebaseConfig);
-const provider = new GoogleAuthProvider();
 const database = getDatabase(app);
 const auth = getAuth();
-const googleBtn = document.querySelector('#google-sign-in');
 const signInBtn = document.querySelector('.auth__btn-sign-in');
 const signUpBtn = document.querySelector('.auth__btn-sign-up');
-const signInBox = document.querySelector('.header__auth-box');
-const myAccount = document.querySelector('.auth__my-account');
-var isSignIn = false;
 
 
 refs.openAuthModalBtn.addEventListener("click", openModalAuth);
 function openModalAuth() {
     refs.modalAuth.classList.toggle("visually-hidden");
     refs.body.classList.toggle("no-scroll");
+    document.addEventListener('keydown', onEscCloseAuth);
 }
 
-googleBtn.addEventListener("click", (e) =>{
-  signInWithPopup(auth, provider)
-  .then((result) => {
-    
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    
-    const user = result.user;
-    closeModal();
-    renderAuthModal();
-    renderMyAccount();
-    isSignIn = true;
-    
-  }).catch((error) => {
-    
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    
-    
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    
-  });
-});
 
 signUpBtn.addEventListener("click", (e) =>{
-  var email = document.getElementById('auth__email').value;
-  var password = document.getElementById('auth__password').value;
-  var username = document.getElementById('auth__username').value;
+  let email = document.getElementById('auth__email').value;
+  let password = document.getElementById('auth__password').value;
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
      
       const user = userCredential.user;
-
       set(ref(database, 'users/' + user.uid),{
-          username: username,
           email: email
       })
-
       alert('user created!');
-      closeModal();
-      renderAuthModal();
+      console.log(user);
       
     })
     .catch((error) => {
@@ -90,8 +58,8 @@ signUpBtn.addEventListener("click", (e) =>{
 
 
 signInBtn.addEventListener("click", (e) =>{
-  var email = document.getElementById('auth__email').value;
-  var password = document.getElementById('auth__password').value;
+  let email = document.getElementById('auth__email').value;
+  let password = document.getElementById('auth__password').value;
 
 
   signInWithEmailAndPassword(auth, email, password)
@@ -105,10 +73,8 @@ signInBtn.addEventListener("click", (e) =>{
         })
 
         alert('User loged in!');
-        isSignIn = true;
         closeModal();
-        renderAuthModal();
-
+        renderMyAccount();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -131,24 +97,19 @@ function onEscCloseAuth(event) {
   }
 }
 
-document.addEventListener('keydown', onEscCloseAuth);
+
 document.addEventListener('click', onClickCloseAuth);
 
 function closeModal() {
   refs.modalAuth.classList.add("visually-hidden");
   refs.body.classList.toggle("no-scroll");
-  renderAuthModal();
-  renderMyAccount();
 }
+
 function renderAuthModal(){
-  refs.modalAuth.innerHTML = `
+    refs.modalAuth.innerHTML = `
   <div class ="auth__modal">
   <div class="auth__modal-wrapper" content-auth-modal>
-  <p class="auth__paragraph">You can use Google Account for authorization:</p>
-  <div>
-      <button class="auth__btn auth__google-btn" id="google-sign-in" sign-in-with-google>Sign in with Google</button>
-  </div>
-  <p class="auth__paragraph">Or login to the app using your e-mail and password:</p>
+  <p class="auth__paragraph">Login to the app using your e-mail and password:</p>
   <form class="auth__form">
   <label class="auth__label"><p class="auth__input-text">Your username</p> <input type="text" class="auth__input auth__input-username" id="auth__username"></label>
   <label class="auth__label"><p class="auth__input-text">Your email</p> <input type="email" class="auth__input auth__input-email" id="auth__email"></label>
@@ -163,16 +124,47 @@ function renderAuthModal(){
 </div>`
 }
 function renderMyAccount(){
+    const user = auth.currentUser;
+    const email = user.email;
 
-  // if (isSignIn === false){
-  //   signInBox.innerHTML = `
-  //   <button class="header__auth-btn" data-auth-modal-open>My Account</button>
-  // `
-  // }
-  // if(isSignIn === true){
-  //   signInBox.innerHTML = `
-  //   <button class="header__auth-btn" data-auth-modal-open>Log Out</button>
-  // `
-  // }
-  
-}
+    refs.modalAuth.innerHTML = `
+    <div class ="auth__modal auth__account-modal">
+      <div class="auth__account-box">
+        <label for=""><p class="auth__account-paragraph">Email: ${email}</p></label>
+        <div class="auth__account-wrapper">
+        <button class="auth__btn auth__reset-btn">Reset password</button>
+        <button class="auth__btn auth__logout-btn">Log Out</button>
+        </div>
+      </div>
+    </div>
+    `
+    const logOut = document.querySelector('.auth__logout-btn');
+    const resetPassword = document.querySelector('.auth__reset-btn');
+
+    logOut.addEventListener('click',(e)=>{
+
+      signOut(auth).then(() => {
+        alert('User loged out');
+        closeModal();
+        renderAuthModal();
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+    
+           alert(errorMessage);
+      });
+    
+    });
+
+    resetPassword.addEventListener('click', (e)=>{
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert(`Password reset email was sent to ${email}!`);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    }
+    );
+};
