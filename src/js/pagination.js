@@ -95,6 +95,9 @@ export function handlerPagination(evt) {
     getCurrentURL();
     renderMarkup(callback, refs.gallery);
     pagination.innerHTML = createPagination(totalPages, page);
+    window.scrollTo({
+      top: 0,
+    })
     return;
   }
   if (evt.target.textContent === "Next") {
@@ -102,6 +105,9 @@ export function handlerPagination(evt) {
     getCurrentURL();
     renderMarkup(callback, refs.gallery);
     pagination.innerHTML = createPagination(totalPages, page);
+    window.scrollTo({
+      top: 0,
+    })
     return;
   }
   if (evt.target.textContent === "...") {
