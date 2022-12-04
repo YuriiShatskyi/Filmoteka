@@ -46,7 +46,7 @@ const getGenres = totalGenres =>
       ${movie.original_title}
     </p>
     <p class="info-item">
-    // ${getGenres(totalGenres).join(', ')} | ${movie.release_date.substring(0, 4)}
+    ${getGenres(totalGenres).join(', ')} | ${movie.release_date.substring(0, 4)}
     </p>
   
   </div>
