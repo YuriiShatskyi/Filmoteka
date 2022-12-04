@@ -12,7 +12,9 @@ import { refs } from "./refs";
 
 const API_KEY = 'ae41ac8beda98b2e2d51e160e21365e8';
 const BASE_URL = 'https://api.themoviedb.org/3';
-const imgPlaceholder = 'https://rat.in.ua/wp-content/uploads/2014/06/2640-Bender-Futurama.png';
+const imgPlaceholder = 'https://ctl.s6img.com/society6/img/dRkT-Cehv6_-47AFCEd309Wg4fo/h_264,w_264/posters/18x24/top/~artwork,fw_2718,fh_3620,fy_-1,iw_2718,ih_3624/s6-original-art-uploads/society6/uploads/misc/221aba853cb545d6b9d2d3ac18a99a5d/~~/fetch-this-posters.jpg';
+const genresDefault = 'We dont have any information about it'
+const about = 'Sorry, We are working on it'
 
 
 refs.openModalE.addEventListener('click', onMovieCLick);
@@ -97,9 +99,9 @@ function createModalFilmInfoMarkup({
     const base_url = 'https://image.tmdb.org/t/p/';
     const size = 'w500';
     const genresList = genres.map(genre => genre.name).join(', ');
+  
 
-
-    refs.modalFilmInfo.innerHTML = `<button type="button" class="modal__close-button">
+  refs.modalFilmInfo.innerHTML = `<button type="button" class="modal__close-button">
      <svg
         xmlns="http://www.w3.org/2000/svg"
         width="14"
@@ -142,13 +144,13 @@ function createModalFilmInfoMarkup({
         
                 <tr class="modal-movie-properties__info">
                     <td class="modal-movie-properties__name">Genre</td>
-                    <td class="modal-movie-properties__value" id="genre"> ${genresList}</td>
+                    <td class="modal-movie-properties__value" id="genre"> ${genresList ? genres[0].name : genresDefault}</td>
                 </tr>
         
             </table>
         
             <h3 class="modal__descr-title">About</h3>
-            <p class="modal__descr" id="overview">${overview}</p>
+            <p class="modal__descr" id="overview">${overview ? overview : about}</p>
 
             <button type="button" id="trailer" class="modal__button">watch trailer</button>
         

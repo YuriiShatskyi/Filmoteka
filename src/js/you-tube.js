@@ -14,7 +14,7 @@ async function getTrailerByID(movieID) {
  
         renderTrailer(key);
   } catch (error) {
-       alert('Your movie dont have any trailer');
+       alert('Your movie does not have any trailer');
   }
 }
 
