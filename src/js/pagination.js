@@ -9,7 +9,7 @@ const paginationEl = document.querySelector('.pagination')
 const pagination = document.querySelector(".pagination ul");
 
 let callback = '';
-let totalPages = 30;
+let totalPages = 1000;
 
 // виклик функції з передачею параметрів і додаванням внутрішнього елемента, який є тегом ul
 
