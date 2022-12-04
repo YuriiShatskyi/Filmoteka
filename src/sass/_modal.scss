@@ -85,7 +85,7 @@
             position: relative;
             margin-right: auto;
             margin-left: auto;
-           
+        border: 0px;
             right: -5px;
             top: 325px;
     
@@ -98,6 +98,7 @@
                 margin-left: auto;
                 top: 84px;
                 right: 0px;
+                border: 0px;
                  }
 
         @media screen and (min-width: 1024px) {
@@ -107,6 +108,7 @@
                     margin-right: auto;
                     position: relative;
                     left: 6px;
+                    border: 0px;
         }
 }
 
