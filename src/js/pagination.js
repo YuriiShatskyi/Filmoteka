@@ -30,8 +30,7 @@ export default function createPagination(totalPages, page) {
   
   if (page > 1) {
     li += `<li class="btn prev">Prev</li>`;
-  }
-  if (page > 1) {
+  
     li += `<li class="first number" >1</li>`;
   }
   if (page > 4) {
@@ -108,9 +107,10 @@ export function handlerPagination(evt) {
   if (evt.target.textContent === "...") {
     return
   }
-  page = evt.target.textContent;
+  page = Number(evt.target.textContent);
   getCurrentURL();
   renderMarkup(callback, refs.gallery);
+  pagination.innerHTML = createPagination(totalPages, page);
   
    window.scrollTo({
     top: 0,
