@@ -370,7 +370,7 @@
     transform: translate(-50%,-50%)scale(1);
     box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 1px rgb(0 0 0 / 14%), 0 2px 1px rgb(0 0 0 / 20%);
 
-    height: 506px;
+    height: 460px;
     width: 50%;
     border-radius: 15px;
 }
@@ -380,6 +380,7 @@
     height: 100%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .auth__form{
     display: flex;
@@ -425,7 +426,6 @@
     }
 }
 .auth__paragraph{
-    margin-top: 20px;
     margin-bottom: 20px;
     font-size: 10px;
     line-height: 1.33;
@@ -484,4 +484,35 @@
     @media screen and (min-width: 1280px) {
         font-size: 14px;
     }
+}
+.auth__account-modal{
+    background-color: var(--secondary-color);
+    position: absolute;
+    min-width: 300px;
+    max-width: 550px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)scale(1);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 1px rgb(0 0 0 / 14%), 0 2px 1px rgb(0 0 0 / 20%);
+
+    height: 300px;
+    width: 40%;
+    border-radius: 15px;
+}
+.auth__account-box{
+    display: flex;
+    position: relative;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.auth__account-wrapper{
+    display: flex;
+}
+.auth__account-paragraph{
+    margin-bottom: 30px;
+}
+.auth__logout-btn{
+    margin-left:20px;
 }
