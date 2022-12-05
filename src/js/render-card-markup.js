@@ -26,7 +26,7 @@ let allGenres = genres.join(', ');
         ${movie.original_title}
       </p>
       <p class="info-item">
-       ${allGenres} | ${movie.release_date.substring(0, 4)}      <span class="vote-container visually-hidden">${movie.vote_average.toFixed(1)}</span> 
+       ${allGenres} | ${movie.release_date.substring(0, 4)}      
       </p>
 
     </div>

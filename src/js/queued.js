@@ -46,7 +46,7 @@ const getGenres = totalGenres =>
       ${movie.original_title}
     </p>
     <p class="info-item">
-    ${getGenres(totalGenres).join(', ')} | ${movie.release_date.substring(0, 4)}
+    ${getGenres(totalGenres).join(', ')} | ${movie.release_date.substring(0, 4)} <span class="vote-container">${movie.vote_average.toFixed(1)}</span> 
     </p>
   
   </div>
@@ -96,7 +96,7 @@ const getGenres = totalGenres =>
       ${movie.original_title}
     </p>
     <p class="info-item">
-     ${getGenres(totalGenres).join(', ')} | ${movie.release_date.substring(0, 4)}
+     ${getGenres(totalGenres).join(', ')} | ${movie.release_date.substring(0, 4)} <span class="vote-container">${movie.vote_average.toFixed(1)}</span> 
     </p>
   
   </div>
